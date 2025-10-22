@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Escuela Superior de Enfermería</title>
+<meta name="description" content="Sitio institucional de la Escuela Superior de Enfermería." />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Opcional: reemplazar por la familia usada en Canva -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/styles.css" />
+</head>
+<body>
+
+
+<!-- [NAV] Logo izquierda + enlaces a secciones -->
+<header class="header" role="banner">
+<div class="container header__wrap">
+<a href="#inicio" class="brand" aria-label="Ir al inicio">
+    <img src="img/logo-escuela.png" alt="Escuela Superior de Enfermería" class="brand__logo" />
+</a>
+
+
+<button class="nav__toggle" aria-controls="nav" aria-expanded="false" aria-label="Abrir menú">
+    ☰
+</button>
+
+
+<nav id="nav" class="nav" role="navigation">
+    <ul class="nav__list">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+        <li><a href="#ubicacion">Ubicación</a></li>
+        <li><a href="#inscripcion">Cómo inscribirse</a></li>
+    </ul>
+</nav>
+<span class="brand__name">Escuela Superior de Enfermería</span>
+</div>
+</header>
+
+
+<main id="inicio">
+<!-- [SECTION 1] Hero a pantalla completa con imagen y frase centrada -->
+<section class="hero" aria-label="Presentación">
+    <picture>
+        <!-- Opcional: agregar <source> para webp/avif -->
+        <img src="img/portada.jpg" alt="Estudiante de enfermería en el campus" class="hero__img" />
+    </picture>
+    <div class="hero__overlay">
+        <h1 class="hero__title">“ ... Aquí los valores humanos y el conocimiento científico se dan la mano, para que usted sea el que les de... una mano a los demás… “</h1>
+    </div>
+</section>
+
+
+<!-- [SECTION 2] Nuestras Instalaciones + video -->
+<section class="section" aria-labelledby="instalaciones">
+    <div class="container">
+        <h2 id="instalaciones" class="section__title">Nuestras Instalaciones</h2>
+        <div class="video__wrap">
+            <!-- Reemplazar por el video real: archivo local o YouTube -->
+            <!-- Ejemplo YouTube embed -->
+            <iframe class="video" width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID" title="Video de las instalaciones" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+    </div>
+</section>
+
+<!-- ============================= -->
+<!-- NUEVO: SECTION 3 — Carrera e historia -->
+<!-- ============================= -->
+<section class="section" aria-labelledby="carrera-historia">
+  <div class="container grid-2">
+    <div>
+      <h2 id="carrera-historia" class="section__title">Carrera</h2>
+      <p>
+        Breve descripción de la carrera: duración, título que otorga, objetivos de formación y salida laboral.
+        Podés ampliar con competencias específicas y ámbitos de desempeño profesional.
+      </p>
+    </div>
+    <div>
+      <h2 class="section__title">Historia</h2>
+      <p>
+        Reseña de la institución: año de creación, hitos relevantes, vinculación con hospitales y centros de salud,
+        y compromiso con la comunidad de Cañada de Gómez y la región.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= -->
+<!-- NUEVO: TIRA MEDIA — 3 características -->
+<!-- ============================= -->
+<section class="strip" aria-label="Características de la carrera">
+  <div class="container strip__grid">
+    <div class="strip__item">
+      <h3>Duración</h3>
+      <p>3 años • Turno mañana</p>
+    </div>
+    <div class="strip__item">
+      <h3>Prácticas</h3>
+      <p>Hospital público y centros de salud</p>
+    </div>
+    <div class="strip__item">
+      <h3>Título</h3>
+      <p>Enfermero/a Profesional</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= -->
+<!-- NUEVO: SECTION 4 — Plan de estudio (3 columnas) -->
+<!-- ============================= -->
+<section class="section" aria-labelledby="plan-estudio">
+  <div class="container">
+    <h2 id="plan-estudio" class="section__title">Plan de Estudio</h2>
+
+    <div class="plan__grid">
+      <article class="plan__col">
+        <h3>Primer Año</h3>
+        <ul class="list">
+          <li>Anatomía y Fisiología</li>
+          <li>Fundamentos de Enfermería</li>
+          <li>Salud Pública I</li>
+          <li>Psicología</li>
+        </ul>
+      </article>
+
+      <article class="plan__col">
+        <h3>Segundo Año</h3>
+        <ul class="list">
+          <li>Enfermería Clínica</li>
+          <li>Farmacología</li>
+          <li>Salud Pública II</li>
+          <li>Bioética</li>
+        </ul>
+      </article>
+
+      <article class="plan__col">
+        <h3>Tercer Año</h3>
+        <ul class="list">
+          <li>Enfermería Materno-Infantil</li>
+          <li>Emergentología</li>
+          <li>Gestión del Cuidado</li>
+          <li>Práctica Profesional</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= -->
+<!-- NUEVO: SECTION 5 — Requisitos (izq) + Imagen (der) -->
+<!-- ============================= -->
+<section id="inscripcion" class="section" aria-labelledby="requisitos">
+  <div class="container grid-2 v-center">
+    <div>
+      <h2 id="requisitos" class="section__title">Requisitos para inscribirse</h2>
+      <ul class="list">
+        <li>DNI y fotocopia</li>
+        <li>Título secundario o constancia de título en trámite</li>
+        <li>Certificado de Salud</li>
+        <li>Foto 4x4</li>
+      </ul>
+      <a class="btn" href="#contacto">Consultar inscripción</a>
+    </div>
+    <div>
+      <img src="img/inscripcion.jpg" alt="Estudiantes realizando la inscripción" class="img-cover" />
+    </div>
+  </div>
+</section>
+
+<!-- ============================= -->
+<!-- NUEVO: FOOTER con mapa + info + logos -->
+<!-- ============================= -->
+<footer class="footer" role="contentinfo">
+  <div class="container footer__grid">
+    <div class="footer__map">
+      <!-- Reemplazá el src por el embed real de Google Maps -->
+      <iframe
+        title="Mapa de la Escuela"
+        src="https://www.google.com/maps/embed?pb=!1m18!..."
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+
+    <div class="footer__info">
+      <img src="img/logo-escuela.png" alt="Logo de la institución" class="footer__logo" />
+      <p>
+        Escuela Superior de Enfermería<br/>
+        Calle 123, Cañada de Gómez, Santa Fe<br/>
+        <a href="mailto:escuela@ejemplo.edu.ar">escuela@ejemplo.edu.ar</a>
+      </p>
+
+      <div class="footer__sfe">
+        <img src="img/logo-santafe.png" alt="Gobierno de Santa Fe" />
+      </div>
+    </div>
+  </div>
+
+  <div class="footer__legal">
+    <div class="container">
+      <small>© <span id="year"></span> Escuela Superior de Enfermería. Todos los derechos reservados.</small>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
