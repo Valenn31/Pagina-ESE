@@ -68,6 +68,7 @@ img {
     z-index: 50;
     background: #fff;
     border-bottom: 1px solid #e5e7eb;
+    display: flex;
 }
 
 .header__wrap {
@@ -87,7 +88,7 @@ img {
 }
 
 .brand__logo {
-    height: 40px;
+    height: 100px;
     width: auto;
 }
 
@@ -161,6 +162,7 @@ img {
     .brand__name {
         display: none;
     }
+
     .header {
         height: 7rem;
     }
@@ -338,7 +340,7 @@ img {
     padding: .2rem 0;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 992px) {
     .plan__grid {
         grid-template-columns: repeat(3, 1fr);
     }
@@ -474,5 +476,12 @@ img {
 @media (min-width: 992px) {
     .footer__grid {
         grid-template-columns: 1.3fr .7fr;
+    }
+}
+
+@media (max-width: 991px) {
+    .footer__grid {
+        display: flex;
+        flex-direction: column;
     }
 }
