@@ -417,6 +417,10 @@ img {
     filter: brightness(1.2);
 }
 
+.footer__logos {
+    display: flex;
+}
+
 .footer__sfe img {
     height: 40px;
     width: auto;
@@ -428,6 +432,43 @@ img {
     padding: .8rem 0;
     font-size: .85rem;
     color: #94a3b8;
+}
+
+.footer_cont {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  align-items: flex-start;
+}
+
+.footer_item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footer_item img {
+  width: 22px; /* tamaño del ícono */
+  height: 22px;
+  object-fit: contain;
+  filter: brightness(1.2);
+}
+
+.footer_item p {
+  margin: 0;
+  color: #cbd5e1;
+  font-size: 0.95rem;
+}
+
+.footer_link {
+  color: #cbd5e1;
+  text-decoration: none;
+  font-weight: 600;
+  margin-top: 0.8rem;
+}
+
+.footer_link:hover {
+  text-decoration: underline;
 }
 
 @media (min-width: 992px) {
