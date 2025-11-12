@@ -166,7 +166,10 @@ img {
         height: 7rem;
     }
     }
-
+    .brand__logo {
+    height: 100px;
+    width: auto;
+}
 @media (min-width: 992px) {
     .nav {
         display: block;
