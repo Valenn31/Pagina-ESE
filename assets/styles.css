@@ -6,7 +6,7 @@
 }
 
 :root {
-    --verde: #0b6aba; /* Ajustar a la paleta del Canva */
+    --verde: #19a693; /* Ajustar a la paleta del Canva */
     --celeste: #0db4b9;
     --color-oscuro: #0f1b2d;
     --color-claro: #f7f9fc;
@@ -196,9 +196,16 @@ img {
     filter: brightness(.7);
 }
 
+.hero__color-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(2, 248, 252, 0.3); /* Cambia este color */
+    z-index: 1;
+}
+
 .hero__overlay {
     position: relative;
-    z-index: 1;
+    z-index: 10;
     display: grid;
     place-items: center;
     min-height: inherit;
@@ -216,7 +223,7 @@ img {
 
 /* SECCIONES GENERALES */
 .section {
-    padding: clamp(2.5rem, 6vw, 5rem) 0;
+    padding: clamp(1.5rem, 6vw, 5rem) 0;
 }
 
 .section:nth-of-type(even) {
@@ -227,6 +234,7 @@ img {
     font-size: clamp(1.4rem, 2.6vw, 2rem);
     margin-bottom: 1.25rem;
     color: var(--color-oscuro);
+    text-align: center;
 }
 
 #section_1 {
@@ -272,30 +280,19 @@ img {
 
 .v-center {
     align-items: center;
+    padding: 0 15px 0 15px;
 }
 
-
-/* STRIP 3 columnas */
-.strip {
-    background: linear-gradient(90deg, var(--verde), var(--celeste));
-    color: #fff;
+.v-center .section__title{
+    text-align: center;
 }
 
-.strip__grid {
-    display: grid;
-    gap: 1rem;
-    padding: 1.25rem 0;
-}
-
-.footer__grid {
-    display: flex;
-}
 
 /* ============================= */
 /* NUEVO: TIRA MEDIA (strip) */
 /* ============================= */
 .strip {
-    background: linear-gradient(90deg, var(--verde), var(--celeste));
+    background: var(--verde);
     color: #fff;
 }
 
@@ -332,7 +329,7 @@ img {
 }
 
 .plan__col {
-    background: #fff;
+    background: #ffffffbb;
     border: 1px solid #e5e7eb;
     border-radius: .75rem;
     padding: 1rem 1.25rem;
