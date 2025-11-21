@@ -16,27 +16,26 @@
 <!-- [NAV] Logo izquierda + enlaces a secciones -->
 <header class="header" role="banner">
 <div class="container header__wrap">
-<a href="#inicio" class="brand" aria-label="Ir al inicio">
-    <img src="/assets/img/logo-escuela.png" alt="Escuela Superior de Enfermería" class="brand__logo" />
-</a>
+  <a href="#inicio" class="brand" aria-label="Ir al inicio">
+      <img src="/assets/img/logo-escuela.png" alt="Escuela Superior de Enfermería" class="brand__logo" />
+  </a>
+  
+  <span class="brand__name__movil">Escuela Superior de Enfermería</span>
 
-
-<button class="nav__toggle" aria-controls="nav" aria-expanded="false" aria-label="Abrir menú">
-    Menu  ☰
-</button>
-
+  <button class="nav__toggle" aria-controls="nav" aria-expanded="false" aria-label="Abrir menú">
+      ☰
+  </button>
 
 <nav id="nav" class="nav" role="navigation">
   <ul class="nav__list">
     <li><a href="#inicio">Inicio</a></li>
     <li><a href="#contacto">Contacto</a></li>
-    <li><a href="#ubicacion">Ubicación</a></li>
+    <li><a href="#section_3">Plan de estudio</a></li>
     <li><a href="#inscripcion">Cómo inscribirse</a></li>
   </ul>
 </nav>
 
-  
-<span class="brand__name">Escuela Superior de Enfermería</span>
+  <span class="brand__name">Escuela Superior de Enfermería</span>
 
 </div>
 </header>
@@ -72,16 +71,16 @@
 <!-- NUEVO: SECTION 3 — Carrera e historia -->
 <!-- ============================= -->
 <section class="section" id="section_2" aria-labelledby="carrera-historia">
+  <h2 id="carrera-historia" class="section__title">Carrera e Historia</h2>
   <div class="container grid-2">
     <div>
-      <h2 id="carrera-historia" class="section__title">Carrera e Historia</h2>
+      
       <p>
         La Escuela Superior de Enfermería brinda una educación integral, innovadora y de avanzada en el área de Enfermería, es por ello que el Hospital San José, con más de 130 años de trayectoria, es el centro de formación de los estudiantes.
         Los alumnos, el cuerpo docente y el equipo de salud, establecen una relación de roles activos y son los protagonistas del proceso
         enseñanza aprendizaje.
       </p>
-    </div>
-    <div>
+      <br>
       <p>
         El objetivo de nuestra Escuela es formar profesionales autónomos, con identidad profesional, cuya responsabilidad y actuación se centre en la promoción, protección, recuperación y rehabilitación de la salud del individuo, familia y comunidad y además poseer un grado de competencia que le permita tomar decisiones y compartir responsabilidades con los demás miembros del equipo de salud.
         Las incumbencias abarcan funciones en lo asistencial, la docencia, la investigación y el gerenciamiento de los servicios de enfermería tanto en Centros Asistenciales de baja, mediana o alta complejidad como en Instituciones formadores de este Recurso Humano.
@@ -169,7 +168,7 @@
 <!-- ============================= -->
 <section id="inscripcion" class="section" aria-labelledby="requisitos">
   <div class="container grid-2 v-center" >
-    <div>
+    <div class="requisitos_contenedor">
       <h2 id="requisitos" class="section__title">Requisitos para inscribirse</h2>
       <ul class="list">
         <li>DNI y fotocopia</li>
@@ -177,18 +176,23 @@
         <li>Certificado de Salud</li>
         <li>Foto 4x4</li>
       </ul>
-      <a class="btn" href="#contacto">Consultar inscripción</a>
+      <a class="btn_pc" href="#contacto">Consultar inscripción</a>
     </div>
     <div>
-      <img src="img/inscripcion.jpg" alt="Estudiantes realizando la inscripción" class="img-cover" />
+      <img src="/assets/img/inscripcion.jpeg" alt="Estudiantes realizando la inscripción" class="img-cover" />
     </div>
+    
   </div>
+  <div class="contenedor_boton">
+    <a class="btn" href="#contacto">Consultar inscripción</a>
+  </div>
+  
 </section>
 
 <!-- ============================= -->
 <!-- NUEVO: FOOTER con mapa + info + logos -->
 <!-- ============================= -->
-<footer class="footer" role="contentinfo">
+<footer class="footer" role="contentinfo" id="contacto">
   <div class="container footer__grid">
     <div class="footer__map">
       <!-- Reemplazá el src por el embed real de Google Maps -->
