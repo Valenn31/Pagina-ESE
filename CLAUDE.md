@@ -4,20 +4,18 @@ Este archivo le proporciona orientación a Claude Code (claude.ai/code) al traba
 
 ## Descripción del proyecto
 
-Sitio web estático institucional para la Escuela Superior de Enfermería en Argentina. HTML5/CSS3/JS puro — sin sistema de build, sin gestor de paquetes, sin framework.
+Sitio web institucional para la Escuela Superior de Enfermería · Cañada de Gómez (Santa Fe, Argentina). HTML5/CSS3/JS puro — sin sistema de build, sin gestor de paquetes, sin framework.
 
-## Desarrollo local
-
-No hay paso de compilación. Servir directamente:
+## Comandos
 
 ```bash
-# Python (disponible en la mayoría de sistemas)
-python -m http.server 8080
-
-# O simplemente abrir index.html en el navegador para ediciones rápidas
+npm install        # instalar dependencias (solo la primera vez)
+npm run dev        # servidor de desarrollo con HMR en http://localhost:5173
+npm run build      # genera el build de producción en dist/
+npm run preview    # previsualizar el build de producción localmente
 ```
 
-El despliegue se realiza haciendo push al repositorio remoto de GitHub; el sitio se aloja de forma estática.
+El despliegue se realiza subiendo el contenido de `dist/` al hosting estático, o haciendo push al repositorio de GitHub con integración a Netlify/Vercel.
 
 ## Arquitectura
 
@@ -30,10 +28,11 @@ Sitio de una sola página. Todo el contenido vive en `index.html`. Estructura:
 
 ### Distribución de archivos
 
-- `index.html` — todo el marcado HTML
-- `assets/styles.css` — todos los estilos (~714 líneas); usa propiedades CSS personalizadas (`--verde`, `--celeste`, `--color-oscuro`, `--color-claro`, `--texto`)
-- `js/main.js` — toggle del menú hamburguesa, header que se oculta al hacer scroll, año en el footer, reveal con IntersectionObserver
-- `assets/img/` — imágenes del logo, portada e inscripción
+- `index.html` — todo el marcado HTML (punto de entrada de Vite)
+- `assets/styles.css` — todos los estilos; usa propiedades CSS personalizadas (`--verde`, `--celeste`, `--color-oscuro`, `--color-claro`, `--texto`)
+- `js/main.js` — toggle del menú hamburguesa, header que se oculta al hacer scroll, año en el footer, reveal con IntersectionObserver, nav activo, botón volver arriba
+- `public/assets/img/` — imágenes estáticas (logo, portada, inscripción, logo Santa Fe); se sirven con rutas absolutas `/assets/img/...`
+- `public/` — archivos estáticos servidos tal cual: favicon, robots.txt, sitemap.xml
 
 ### Convenciones CSS
 

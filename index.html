@@ -1,244 +1,584 @@
 <!doctype html>
 <html lang="es">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Escuela Superior de Enfermería</title>
-<meta name="description" content="Sitio institucional de la Escuela Superior de Enfermería." />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<!-- Opcional: reemplazar por la familia usada en Canva -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/styles.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ESE · Cañada de Gómez — Formación Profesional en Enfermería</title>
+  <meta name="description" content="Formá tu futuro como Enfermero/a Profesional en la Escuela Superior de Enfermería de Cañada de Gómez. Carrera de 3 años, prácticas en el Hospital San José, título oficial reconocido." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Escuela Superior de Enfermería · Cañada de Gómez" />
+  <meta property="og:description" content="Formá tu futuro como Enfermero/a Profesional. Carrera de 3 años con prácticas en el Hospital San José." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_AR" />
+  <meta property="og:image" content="/assets/img/portada.jpeg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://maps.googleapis.com">
+  <link rel="preconnect" href="https://maps.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Lora:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/styles.css" />
+  <link rel="icon" href="/favicon.ico" />
 </head>
-<body>
+<body class="font-sans text-texto leading-relaxed bg-white">
 
+<!-- ==================== HEADER ==================== -->
+<header class="header h-24 md:h-36 sticky top-0 z-50 bg-white border-b border-gray-100 flex shadow-sm">
+  <div class="max-w-[1120px] w-[92%] mx-auto flex items-center justify-between gap-4 relative lg:grid lg:grid-cols-[auto_1fr_auto] lg:items-center">
 
-<!-- [NAV] Logo izquierda + enlaces a secciones -->
-<header class="header" role="banner">
-<div class="container header__wrap">
-  <a href="#inicio" class="brand" aria-label="Ir al inicio">
-      <img src="/assets/img/logo-escuela.png" alt="Escuela Superior de Enfermería" class="brand__logo" />
-  </a>
-  
-  <span class="brand__name__movil">Escuela Superior de Enfermería</span>
+    <a href="#inicio" class="flex items-center gap-3 no-underline text-inherit absolute left-0 md:static" aria-label="Ir al inicio">
+      <img src="/assets/img/logo-escuela.png" alt="Escuela Superior de Enfermería · Cañada de Gómez" class="h-14 md:h-28 w-auto" />
+    </a>
 
-  <button class="nav__toggle" aria-controls="nav" aria-expanded="false" aria-label="Abrir menú">
-      ☰
-  </button>
+    <span class="absolute left-1/2 -translate-x-1/2 text-sm font-bold whitespace-nowrap text-oscuro md:hidden">ESE · Cañada de Gómez</span>
 
-<nav id="nav" class="nav" role="navigation">
-  <ul class="nav__list">
-    <li><a href="#inicio">Inicio</a></li>
-    <li><a href="#contacto">Contacto</a></li>
-    <li><a href="#section_3">Plan de estudio</a></li>
-    <li><a href="#inscripcion">Cómo inscribirse</a></li>
-  </ul>
-</nav>
+    <button class="nav__toggle absolute right-0 bg-transparent border border-gray-200 rounded-lg px-2.5 py-1.5 text-lg cursor-pointer md:hidden" aria-controls="nav" aria-expanded="false" aria-label="Abrir menú">☰</button>
 
-  <span class="brand__name">Escuela Superior de Enfermería</span>
+    <nav id="nav" class="nav lg:justify-self-center" role="navigation">
+      <ul class="nav__list flex gap-1 list-none md:gap-2">
+        <li><a href="#inicio" class="no-underline text-[#0f172a] font-semibold px-3 py-2 rounded-lg whitespace-nowrap transition-colors duration-200 hover:bg-claro text-sm">Inicio</a></li>
+        <li><a href="#section_2" class="no-underline text-[#0f172a] font-semibold px-3 py-2 rounded-lg whitespace-nowrap transition-colors duration-200 hover:bg-claro text-sm">La carrera</a></li>
+        <li><a href="#section_3" class="no-underline text-[#0f172a] font-semibold px-3 py-2 rounded-lg whitespace-nowrap transition-colors duration-200 hover:bg-claro text-sm">Plan de estudio</a></li>
+        <li><a href="#contacto" class="no-underline text-[#0f172a] font-semibold px-3 py-2 rounded-lg whitespace-nowrap transition-colors duration-200 hover:bg-claro text-sm">Contacto</a></li>
+        <li><a href="#inscripcion" class="no-underline bg-verde text-white font-bold px-4 py-2 rounded-lg whitespace-nowrap transition-[filter] duration-200 hover:brightness-[.88] text-sm">Inscribirse</a></li>
+      </ul>
+    </nav>
 
-</div>
+    <span class="hidden font-bold text-sm text-oscuro lg:block lg:justify-self-end text-right leading-snug max-w-[160px]">Escuela Superior de Enfermería<br><span class="font-normal text-gray-400">Cañada de Gómez</span></span>
+  </div>
 </header>
 
 
 <main id="inicio">
-<!-- [SECTION 1] Hero a pantalla completa con imagen y frase centrada -->
-<section class="hero" aria-label="Presentación">
-  <picture>
-    <!-- Opcional: agregar <source> para webp/avif -->
-    <img src="/assets/img/portada.jpeg" alt="Estudiante de enfermería en el campus" class="hero__img" />
-  </picture>
-  <div class="hero__color-overlay"></div>
-  <div class="hero__overlay">
-    <h1 class="hero__title">" ... Aquí los valores humanos y el conocimiento científico se dan la mano, para que usted sea el que les de... una mano a los demás… "</h1>
-  </div>
-</section>
 
-
-<!-- [SECTION 2] Nuestras Instalaciones + video -->
-<section class="section" id="section_1" aria-labelledby="instalaciones">
-  <div class="container">
-      <h2 id="instalaciones" class="section__title">Nuestras Instalaciones</h2>
-      <div class="video__wrap">
-        <!-- Reemplazar por el video real: archivo local o YouTube -->
-        <!-- Ejemplo YouTube embed -->
-        <iframe class="video" width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID" title="Video de las instalaciones" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  <!-- ==================== HERO ==================== -->
+  <section class="relative min-h-[calc(100dvh-6rem)] md:min-h-[calc(100dvh-9rem)]" aria-label="Presentación">
+    <picture>
+      <img src="/assets/img/portada.jpeg" alt="Estudiante de enfermería en el campus" class="absolute inset-0 w-full h-full object-cover" />
+    </picture>
+    <div class="absolute inset-0 bg-gradient-to-b from-oscuro/60 via-oscuro/50 to-oscuro/70"></div>
+    <div class="relative z-10 flex flex-col items-center justify-center min-h-[inherit] text-center px-6 py-16">
+      <span class="inline-block bg-white/15 border border-white/30 text-white text-xs font-semibold tracking-widest uppercase px-4 py-1.5 rounded-full mb-6">Santa Fe, Argentina</span>
+      <h1 class="font-serif text-white text-[clamp(1.6rem,4vw,3rem)] font-bold leading-tight max-w-3xl [text-shadow:0_2px_16px_rgba(0,0,0,.4)] mb-6">" ... Aquí los valores humanos y el conocimiento científico se dan la mano, para que usted sea el que les de... una mano a los demás… "</h1>
+      <p class="text-white/80 text-lg mb-10 max-w-xl">Formá tu futuro como <strong class="text-white">Enfermero/a Profesional</strong> en la escuela con más tradición de la región.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#inscripcion" class="bg-verde text-white font-bold px-8 py-4 rounded-full text-base transition-all duration-200 hover:brightness-110 hover:scale-105 shadow-lg shadow-verde/40 no-underline">Quiero inscribirme →</a>
+        <a href="#section_2" class="border-2 border-white text-white font-bold px-8 py-4 rounded-full text-base transition-all duration-200 hover:bg-white/15 no-underline">Conocer la carrera ↓</a>
       </div>
-  </div>
-</section>
+    </div>
+  </section>
 
-<!-- ============================= -->
-<!-- NUEVO: SECTION 3 — Carrera e historia -->
-<!-- ============================= -->
-<section class="section" id="section_2" aria-labelledby="carrera-historia">
-  <h2 id="carrera-historia" class="section__title">Carrera e Historia</h2>
-  <div class="container grid-2">
+  <!-- ==================== POR QUÉ ELEGIRNOS ==================== -->
+  <section class="reveal py-16 lg:py-24 bg-white" aria-labelledby="por-que">
+    <div class="max-w-[1120px] w-[92%] mx-auto">
+      <p class="text-center text-verde font-semibold text-sm tracking-widest uppercase mb-3">Nuestra propuesta</p>
+      <h2 id="por-que" class="section-title font-serif text-[clamp(1.5rem,2.6vw,2.1rem)] font-bold text-oscuro text-center mb-12">Por qué elegir la ESE</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <div class="group p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+          <div class="w-12 h-12 bg-verde/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-verde/20 transition-colors">
+            <svg class="w-6 h-6 text-verde" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Z"/></svg>
+          </div>
+          <h3 class="font-bold text-oscuro text-base mb-2">Prácticas desde el primer año</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Formación en el Hospital San José desde el primer día. Aprendés haciendo, no solo estudiando.</p>
+        </div>
+
+        <div class="group p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+          <div class="w-12 h-12 bg-verde/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-verde/20 transition-colors">
+            <svg class="w-6 h-6 text-verde" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 3.741-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5"/></svg>
+          </div>
+          <h3 class="font-bold text-oscuro text-base mb-2">Título oficial reconocido</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Título de Enfermero/a Profesional con validez nacional, respaldado por el Gobierno de Santa Fe.</p>
+        </div>
+
+        <div class="group p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+          <div class="w-12 h-12 bg-verde/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-verde/20 transition-colors">
+            <svg class="w-6 h-6 text-verde" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25A2.25 2.25 0 0 1 13.5 18v-2.25Z"/></svg>
+          </div>
+          <h3 class="font-bold text-oscuro text-base mb-2">Formación integral en 4 ámbitos</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Asistencial, docencia, investigación y gestión. Salís preparado para cualquier rol en el sistema de salud.</p>
+        </div>
+
+        <div class="group p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+          <div class="w-12 h-12 bg-verde/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-verde/20 transition-colors">
+            <svg class="w-6 h-6 text-verde" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
+          </div>
+          <h3 class="font-bold text-oscuro text-base mb-2">130 años de tradición</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">El Hospital San José, referente regional con más de un siglo de historia, es tu campo de formación.</p>
+        </div>
+
+        <div class="group p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+          <div class="w-12 h-12 bg-verde/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-verde/20 transition-colors">
+            <svg class="w-6 h-6 text-verde" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z"/></svg>
+          </div>
+          <h3 class="font-bold text-oscuro text-base mb-2">Docentes activos en salud</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Aprenderás de profesionales que trabajan en el sistema de salud. Conocimiento teórico y práctico de primera mano.</p>
+        </div>
+
+        <div class="group p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+          <div class="w-12 h-12 bg-verde/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-verde/20 transition-colors">
+            <svg class="w-6 h-6 text-verde" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 0 0 .75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 0 0-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0 1 12 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 0 1-.673-.38m0 0A2.18 2.18 0 0 1 3 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 0 1 3.413-.387m7.5 0V5.25A2.25 2.25 0 0 0 13.5 3h-3a2.25 2.25 0 0 0-2.25 2.25v.894m7.5 0a48.667 48.667 0 0 0-7.5 0M12 12.75h.008v.008H12v-.008Z"/></svg>
+          </div>
+          <h3 class="font-bold text-oscuro text-base mb-2">Alta empleabilidad</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Los enfermeros profesionales son uno de los recursos humanos en salud más demandados de Argentina.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== INSTALACIONES ==================== -->
+  <section class="reveal py-16 lg:py-24 bg-claro" id="section_1" aria-labelledby="instalaciones">
+    <div class="max-w-[1120px] w-[92%] mx-auto">
+      <p class="text-center text-verde font-semibold text-sm tracking-widest uppercase mb-3">Conocé el espacio</p>
+      <h2 id="instalaciones" class="section-title font-serif text-[clamp(1.5rem,2.6vw,2.1rem)] font-bold text-oscuro text-center mb-10">Nuestras Instalaciones</h2>
+      <div class="relative aspect-video rounded-2xl overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,.12)]">
+        <iframe class="absolute inset-0 w-full h-full" width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID" title="Video de las instalaciones" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CARRERA E HISTORIA ==================== -->
+  <section class="reveal py-16 lg:py-24 bg-oscuro text-white" id="section_2" aria-labelledby="carrera-historia">
+    <div class="max-w-[1120px] w-[92%] mx-auto">
+      <p class="text-center text-celeste font-semibold text-sm tracking-widest uppercase mb-3">Nuestra historia</p>
+      <h2 id="carrera-historia" class="section-title section-title-light font-serif text-[clamp(1.5rem,2.6vw,2.1rem)] font-bold text-white text-center mb-12">Carrera e Historia</h2>
+      <div class="flex flex-col gap-10 md:flex-row md:gap-16 items-start">
+        <div class="flex-1 text-white/80 space-y-5 text-[.97rem] leading-relaxed">
+          <p>La Escuela Superior de Enfermería brinda una educación integral, innovadora y de avanzada en el área de Enfermería, es por ello que el Hospital San José, con más de 130 años de trayectoria, es el centro de formación de los estudiantes. Los alumnos, el cuerpo docente y el equipo de salud, establecen una relación de roles activos y son los protagonistas del proceso enseñanza aprendizaje.</p>
+          <p>El objetivo de nuestra Escuela es formar profesionales autónomos, con identidad profesional, cuya responsabilidad y actuación se centre en la promoción, protección, recuperación y rehabilitación de la salud del individuo, familia y comunidad y además poseer un grado de competencia que le permita tomar decisiones y compartir responsabilidades con los demás miembros del equipo de salud.</p>
+          <p>Las incumbencias abarcan funciones en lo asistencial, la docencia, la investigación y el gerenciamiento de los servicios de enfermería tanto en Centros Asistenciales de baja, mediana o alta complejidad como en Instituciones formadores de este Recurso Humano.</p>
+        </div>
+        <div class="flex flex-col gap-4 md:w-56 w-full">
+          <div class="bg-white/[.07] border border-white/15 p-5 rounded-2xl">
+            <p class="text-4xl font-extrabold text-verde leading-none mb-1">+130</p>
+            <p class="text-sm text-white/70">Años de trayectoria del Hospital San José</p>
+          </div>
+          <div class="bg-white/[.07] border border-white/15 p-5 rounded-2xl">
+            <p class="text-4xl font-extrabold text-celeste leading-none mb-1">4</p>
+            <p class="text-sm text-white/70">Áreas de incumbencia: Asistencial · Docencia · Investigación · Gestión</p>
+          </div>
+          <div class="bg-white/[.07] border border-white/15 p-5 rounded-2xl">
+            <p class="text-4xl font-extrabold text-verde leading-none mb-1">3</p>
+            <p class="text-sm text-white/70">Ejes de acción: Individuo · Familia · Comunidad</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== STRIP ==================== -->
+  <section class="reveal bg-verde text-white" aria-label="Características de la carrera">
+    <div class="max-w-[1120px] w-[92%] mx-auto grid gap-4 py-8 md:grid-cols-3">
+      <div class="bg-white/10 border border-white/20 p-5 rounded-2xl flex flex-col gap-2">
+        <svg class="w-8 h-8 text-white/80" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5"/></svg>
+        <h3 class="text-lg font-bold">Duración</h3>
+        <p class="text-white/80 text-sm">3 años • Turno mañana</p>
+      </div>
+      <div class="bg-white/10 border border-white/20 p-5 rounded-2xl flex flex-col gap-2">
+        <svg class="w-8 h-8 text-white/80" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z"/></svg>
+        <h3 class="text-lg font-bold">Prácticas</h3>
+        <p class="text-white/80 text-sm">Hospital público y centros de salud</p>
+      </div>
+      <div class="bg-white/10 border border-white/20 p-5 rounded-2xl flex flex-col gap-2">
+        <svg class="w-8 h-8 text-white/80" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 3.741-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5"/></svg>
+        <h3 class="text-lg font-bold">Título</h3>
+        <p class="text-white/80 text-sm">Enfermero/a Profesional</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== TESTIMONIOS ==================== -->
+  <section class="reveal py-16 lg:py-24 bg-white" aria-labelledby="testimonios">
+    <div class="max-w-[1120px] w-[92%] mx-auto">
+      <p class="text-center text-verde font-semibold text-sm tracking-widest uppercase mb-3">Egresados y estudiantes</p>
+      <h2 id="testimonios" class="section-title font-serif text-[clamp(1.5rem,2.6vw,2.1rem)] font-bold text-oscuro text-center mb-12">Lo que dicen quienes estudian acá</h2>
+      <div class="grid gap-6 md:grid-cols-3">
+
+        <div class="bg-claro rounded-2xl p-6 border border-gray-100">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-11 h-11 rounded-full bg-verde flex items-center justify-center text-white font-bold text-lg shrink-0">M</div>
+            <div>
+              <p class="font-bold text-oscuro text-sm">María González</p>
+              <p class="text-xs text-gray-400">Egresada 2023 · Enfermera en Hospital San José</p>
+            </div>
+          </div>
+          <p class="text-gray-600 text-sm leading-relaxed italic">"La formación práctica que recibí en la ESE me preparó para cualquier situación clínica. Los docentes te acompañan en todo momento y el ambiente es muy humano."</p>
+          <p class="text-verde mt-3 text-sm">★★★★★</p>
+        </div>
+
+        <div class="bg-claro rounded-2xl p-6 border border-gray-100">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-11 h-11 rounded-full bg-celeste flex items-center justify-center text-white font-bold text-lg shrink-0">R</div>
+            <div>
+              <p class="font-bold text-oscuro text-sm">Rodrigo Martínez</p>
+              <p class="text-xs text-gray-400">Estudiante 2do año · Turno mañana</p>
+            </div>
+          </div>
+          <p class="text-gray-600 text-sm leading-relaxed italic">"Desde el primer año ya estás en el hospital haciendo prácticas reales. Eso marca una diferencia enorme con otras formaciones. Te enganchás con la carrera enseguida."</p>
+          <p class="text-verde mt-3 text-sm">★★★★★</p>
+        </div>
+
+        <div class="bg-claro rounded-2xl p-6 border border-gray-100">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-11 h-11 rounded-full bg-oscuro flex items-center justify-center text-white font-bold text-lg shrink-0">L</div>
+            <div>
+              <p class="font-bold text-oscuro text-sm">Laura Fernández</p>
+              <p class="text-xs text-gray-400">Egresada 2022 · Centro de Salud Primaria</p>
+            </div>
+          </div>
+          <p class="text-gray-600 text-sm leading-relaxed italic">"Cuando terminé la carrera conseguí trabajo en menos de un mes. La demanda de enfermeros es enorme y la preparación que da la ESE es reconocida en toda la región."</p>
+          <p class="text-verde mt-3 text-sm">★★★★★</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== PLAN DE ESTUDIO ==================== -->
+  <section class="reveal py-16 lg:py-24 bg-claro" id="section_3" aria-labelledby="plan-estudio">
+    <div class="max-w-[1120px] w-[92%] mx-auto">
+      <p class="text-center text-verde font-semibold text-sm tracking-widest uppercase mb-3">3 años de formación</p>
+      <h2 id="plan-estudio" class="section-title font-serif text-[clamp(1.5rem,2.6vw,2.1rem)] font-bold text-oscuro text-center mb-12">Plan de Estudio</h2>
+      <div class="grid gap-5 md:grid-cols-3">
+
+        <article class="reveal bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow" style="transition-delay:.1s">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="w-9 h-9 rounded-full bg-verde/10 text-verde font-extrabold text-lg flex items-center justify-center">1</span>
+            <h3 class="font-serif font-bold text-oscuro text-lg">Primer Año</h3>
+          </div>
+          <ul class="space-y-2 text-sm text-gray-600">
+            <li class="flex gap-2"><span class="text-verde mt-0.5">•</span>Comunicación</li>
+            <li class="flex gap-2"><span class="text-verde mt-0.5">•</span>Biología Humana I</li>
+            <li class="flex gap-2"><span class="text-verde mt-0.5">•</span>Sujeto, Cultura y Sociedad I</li>
+            <li class="flex gap-2"><span class="text-verde mt-0.5">•</span>Cuidados de Enfermería en la Comunidad y Familia</li>
+            <li class="flex gap-2"><span class="text-verde mt-0.5">•</span>Fundamento del Cuidado en Enfermería</li>
+            <li class="flex gap-2"><span class="text-verde mt-0.5">•</span>Salud Pública</li>
+            <li class="flex gap-2"><span class="text-verde mt-0.5">•</span>Unidad de Definición Institucional I</li>
+            <li class="flex gap-2"><span class="text-verde mt-0.5">•</span>Práctica Profesionalizante</li>
+          </ul>
+        </article>
+
+        <article class="reveal bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow" style="transition-delay:.22s">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="w-9 h-9 rounded-full bg-celeste/10 text-celeste font-extrabold text-lg flex items-center justify-center">2</span>
+            <h3 class="font-serif font-bold text-oscuro text-lg">Segundo Año</h3>
+          </div>
+          <ul class="space-y-2 text-sm text-gray-600">
+            <li class="flex gap-2"><span class="text-celeste mt-0.5">•</span>Problemáticas Socio Contemporáneas</li>
+            <li class="flex gap-2"><span class="text-celeste mt-0.5">•</span>Unidad de Definición Institucional II</li>
+            <li class="flex gap-2"><span class="text-celeste mt-0.5">•</span>Informática en Salud</li>
+            <li class="flex gap-2"><span class="text-celeste mt-0.5">•</span>Biología Humana II</li>
+            <li class="flex gap-2"><span class="text-celeste mt-0.5">•</span>Sujeto, Cultura y Sociedad II</li>
+            <li class="flex gap-2"><span class="text-celeste mt-0.5">•</span>Bioseguridad y Medio Ambiente en el Trabajo</li>
+            <li class="flex gap-2"><span class="text-celeste mt-0.5">•</span>Cuidados de Enfermería a los Adultos y Adultos Mayores</li>
+            <li class="flex gap-2"><span class="text-celeste mt-0.5">•</span>Farmacología en Enfermería</li>
+            <li class="flex gap-2"><span class="text-celeste mt-0.5">•</span>Práctica Profesionalizante II</li>
+          </ul>
+        </article>
+
+        <article class="reveal bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow" style="transition-delay:.38s">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="w-9 h-9 rounded-full bg-verde/10 text-verde font-extrabold text-lg flex items-center justify-center">3</span>
+            <h3 class="font-serif font-bold text-oscuro text-lg">Tercer Año</h3>
+          </div>
+          <ul class="space-y-2 text-sm text-gray-600">
+            <li class="flex gap-2"><span class="text-verde mt-0.5">•</span>Ética y Responsabilidad Social</li>
+            <li class="flex gap-2"><span class="text-verde mt-0.5">•</span>Derecho y Legislación Laboral</li>
+            <li class="flex gap-2"><span class="text-verde mt-0.5">•</span>Inglés Técnico</li>
+            <li class="flex gap-2"><span class="text-verde mt-0.5">•</span>Organización y Gestión en Instituciones de Salud</li>
+            <li class="flex gap-2"><span class="text-verde mt-0.5">•</span>Investigación en Enfermería</li>
+            <li class="flex gap-2"><span class="text-verde mt-0.5">•</span>Cuidados de Enfermería en Salud Mental</li>
+            <li class="flex gap-2"><span class="text-verde mt-0.5">•</span>Cuidados de Enfermería al Niño y al Adolescente</li>
+            <li class="flex gap-2"><span class="text-verde mt-0.5">•</span>Práctica Profesionalizante III</li>
+          </ul>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CAMPO LABORAL ==================== -->
+  <section class="reveal py-16 lg:py-24 bg-oscuro text-white" aria-labelledby="campo-laboral">
+    <div class="max-w-[1120px] w-[92%] mx-auto">
+      <p class="text-center text-celeste font-semibold text-sm tracking-widest uppercase mb-3">Dónde trabajan nuestros egresados</p>
+      <h2 id="campo-laboral" class="section-title section-title-light font-serif text-[clamp(1.5rem,2.6vw,2.1rem)] font-bold text-white text-center mb-4">Campo Laboral</h2>
+      <p class="text-center text-white/60 max-w-xl mx-auto mb-12 text-sm">Los enfermeros profesionales son uno de los recursos humanos en salud más demandados de Argentina. La carrera te abre las puertas a múltiples entornos.</p>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+        <div class="flex items-start gap-4 bg-white/[.06] border border-white/10 p-5 rounded-2xl">
+          <div class="w-10 h-10 rounded-xl bg-verde/20 flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5 text-verde" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Z"/></svg>
+          </div>
+          <div>
+            <h3 class="font-bold text-white text-sm mb-1">Hospitales públicos y privados</h3>
+            <p class="text-white/55 text-xs">Internación, quirófano, UCI, emergencias y más.</p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-4 bg-white/[.06] border border-white/10 p-5 rounded-2xl">
+          <div class="w-10 h-10 rounded-xl bg-celeste/20 flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5 text-celeste" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z"/></svg>
+          </div>
+          <div>
+            <h3 class="font-bold text-white text-sm mb-1">Centros de Atención Primaria</h3>
+            <p class="text-white/55 text-xs">Prevención, promoción y cuidado comunitario.</p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-4 bg-white/[.06] border border-white/10 p-5 rounded-2xl">
+          <div class="w-10 h-10 rounded-xl bg-verde/20 flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5 text-verde" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z"/></svg>
+          </div>
+          <div>
+            <h3 class="font-bold text-white text-sm mb-1">Servicios de Emergencias</h3>
+            <p class="text-white/55 text-xs">SAME, guardia, traslados y atención crítica.</p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-4 bg-white/[.06] border border-white/10 p-5 rounded-2xl">
+          <div class="w-10 h-10 rounded-xl bg-celeste/20 flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5 text-celeste" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12 11.204 3.045c.209-.223.486-.345.796-.345s.587.122.796.345L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"/></svg>
+          </div>
+          <div>
+            <h3 class="font-bold text-white text-sm mb-1">Geriatría y atención domiciliaria</h3>
+            <p class="text-white/55 text-xs">Cuidado de adultos mayores en hogares e instituciones.</p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-4 bg-white/[.06] border border-white/10 p-5 rounded-2xl">
+          <div class="w-10 h-10 rounded-xl bg-verde/20 flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5 text-verde" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"/></svg>
+          </div>
+          <div>
+            <h3 class="font-bold text-white text-sm mb-1">Docencia e investigación</h3>
+            <p class="text-white/55 text-xs">Formación de futuros profesionales y producción de conocimiento.</p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-4 bg-white/[.06] border border-white/10 p-5 rounded-2xl">
+          <div class="w-10 h-10 rounded-xl bg-celeste/20 flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5 text-celeste" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 0 0 6 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0 1 18 16.5h-2.25m-7.5 0h7.5m-7.5 0-1 3m8.5-3 1 3m0 0 .5 1.5m-.5-1.5h-9.5m0 0-.5 1.5m.75-9 3-3 2.148 2.148A12.061 12.061 0 0 1 16.5 7.605"/></svg>
+          </div>
+          <div>
+            <h3 class="font-bold text-white text-sm mb-1">Gestión de servicios de salud</h3>
+            <p class="text-white/55 text-xs">Coordinación y liderazgo de equipos en instituciones sanitarias.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== PROCESO DE INSCRIPCIÓN ==================== -->
+  <section id="inscripcion" class="reveal py-16 lg:py-24 bg-white" aria-labelledby="proceso">
+    <div class="max-w-[1120px] w-[92%] mx-auto">
+      <p class="text-center text-verde font-semibold text-sm tracking-widest uppercase mb-3">Es más simple de lo que pensás</p>
+      <h2 id="proceso" class="section-title font-serif text-[clamp(1.5rem,2.6vw,2.1rem)] font-bold text-oscuro text-center mb-14">Cómo inscribirse</h2>
+
+      <!-- Timeline de pasos -->
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 relative mb-14">
+        <!-- línea conectora solo en desktop -->
+        <div class="hidden lg:block absolute top-7 left-[12.5%] right-[12.5%] h-0.5 bg-verde/20"></div>
+
+        <div class="flex flex-col items-center text-center relative z-10">
+          <div class="w-14 h-14 rounded-full bg-verde text-white flex items-center justify-center text-xl font-extrabold mb-4 shadow-md shadow-verde/30">1</div>
+          <h3 class="font-bold text-oscuro mb-2">Reuní la documentación</h3>
+          <p class="text-gray-500 text-sm">DNI y fotocopia · Título secundario · Certificado de Salud · Foto 4×4</p>
+        </div>
+
+        <div class="flex flex-col items-center text-center relative z-10">
+          <div class="w-14 h-14 rounded-full bg-verde text-white flex items-center justify-center text-xl font-extrabold mb-4 shadow-md shadow-verde/30">2</div>
+          <h3 class="font-bold text-oscuro mb-2">Acercate a la Escuela</h3>
+          <p class="text-gray-500 text-sm">Visitanos en el período de inscripción o contactanos por WhatsApp o mail.</p>
+        </div>
+
+        <div class="flex flex-col items-center text-center relative z-10">
+          <div class="w-14 h-14 rounded-full bg-verde text-white flex items-center justify-center text-xl font-extrabold mb-4 shadow-md shadow-verde/30">3</div>
+          <h3 class="font-bold text-oscuro mb-2">Completá el formulario</h3>
+          <p class="text-gray-500 text-sm">Completá el formulario de ingreso con tu documentación en mano.</p>
+        </div>
+
+        <div class="flex flex-col items-center text-center relative z-10">
+          <div class="w-14 h-14 rounded-full bg-oscuro text-white flex items-center justify-center text-xl font-extrabold mb-4 shadow-md shadow-oscuro/30">✓</div>
+          <h3 class="font-bold text-oscuro mb-2">¡Comenzá la carrera!</h3>
+          <p class="text-gray-500 text-sm">Diste el primer paso hacia tu futuro como enfermero/a profesional.</p>
+        </div>
+      </div>
+
+      <!-- Imagen + requisitos -->
+      <div class="flex flex-col md:flex-row gap-8 items-center">
+        <div class="w-full md:flex-1">
+          <img src="/assets/img/inscripcion.jpeg" alt="Estudiantes realizando la inscripción" class="w-full h-64 md:h-80 object-cover rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,.1)]" />
+        </div>
+        <div class="w-full md:flex-1 bg-claro rounded-2xl p-7">
+          <h3 class="font-serif font-bold text-oscuro text-xl mb-5">Requisitos para inscribirse</h3>
+          <ul class="space-y-3">
+            <li class="flex items-center gap-3 text-gray-700 text-sm"><span class="w-6 h-6 rounded-full bg-verde/15 text-verde flex items-center justify-center shrink-0 font-bold text-xs">✓</span>DNI y fotocopia</li>
+            <li class="flex items-center gap-3 text-gray-700 text-sm"><span class="w-6 h-6 rounded-full bg-verde/15 text-verde flex items-center justify-center shrink-0 font-bold text-xs">✓</span>Título secundario o constancia de título en trámite</li>
+            <li class="flex items-center gap-3 text-gray-700 text-sm"><span class="w-6 h-6 rounded-full bg-verde/15 text-verde flex items-center justify-center shrink-0 font-bold text-xs">✓</span>Certificado de Salud</li>
+            <li class="flex items-center gap-3 text-gray-700 text-sm"><span class="w-6 h-6 rounded-full bg-verde/15 text-verde flex items-center justify-center shrink-0 font-bold text-xs">✓</span>Foto 4×4</li>
+          </ul>
+          <div class="mt-7 flex flex-col sm:flex-row gap-3">
+            <a href="#contacto" class="flex-1 bg-verde text-white no-underline font-bold py-3 px-5 rounded-xl text-center transition-[filter] duration-200 hover:brightness-[.88] text-sm">Consultar inscripción</a>
+            <a href="https://wa.me/5493471429150" target="_blank" rel="noopener noreferrer" class="flex-1 border-2 border-verde text-verde no-underline font-bold py-3 px-5 rounded-xl text-center transition-colors duration-200 hover:bg-verde/5 text-sm flex items-center justify-center gap-2">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+              WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FAQ ==================== -->
+  <section class="reveal py-16 lg:py-24 bg-claro" aria-labelledby="faq">
+    <div class="max-w-[1120px] w-[92%] mx-auto">
+      <p class="text-center text-verde font-semibold text-sm tracking-widest uppercase mb-3">Preguntas frecuentes</p>
+      <h2 id="faq" class="section-title font-serif text-[clamp(1.5rem,2.6vw,2.1rem)] font-bold text-oscuro text-center mb-12">Todo lo que querés saber</h2>
+
+      <div class="max-w-2xl mx-auto space-y-3">
+
+        <div class="faq-item bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-sm">
+          <button class="faq-btn w-full flex items-center justify-between gap-4 p-5 text-left font-semibold text-oscuro text-sm cursor-pointer bg-transparent border-0">
+            <span>¿La carrera es gratuita?</span>
+            <em class="faq-icon text-verde text-2xl not-italic shrink-0">+</em>
+          </button>
+          <div class="faq-answer">
+            <p class="px-5 pb-5 text-gray-500 text-sm leading-relaxed">Sí. La Escuela Superior de Enfermería de Cañada de Gómez es una institución educativa pública provincial. La carrera es completamente gratuita para todos los ingresantes.</p>
+          </div>
+        </div>
+
+        <div class="faq-item bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-sm">
+          <button class="faq-btn w-full flex items-center justify-between gap-4 p-5 text-left font-semibold text-oscuro text-sm cursor-pointer bg-transparent border-0">
+            <span>¿Puedo trabajar mientras estudio?</span>
+            <em class="faq-icon text-verde text-2xl not-italic shrink-0">+</em>
+          </button>
+          <div class="faq-answer">
+            <p class="px-5 pb-5 text-gray-500 text-sm leading-relaxed">La carrera se cursa en turno mañana. Muchos estudiantes trabajan por las tardes o fines de semana. Te recomendamos consultarnos para evaluar tu situación particular.</p>
+          </div>
+        </div>
+
+        <div class="faq-item bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-sm">
+          <button class="faq-btn w-full flex items-center justify-between gap-4 p-5 text-left font-semibold text-oscuro text-sm cursor-pointer bg-transparent border-0">
+            <span>¿El título tiene validez nacional?</span>
+            <em class="faq-icon text-verde text-2xl not-italic shrink-0">+</em>
+          </button>
+          <div class="faq-answer">
+            <p class="px-5 pb-5 text-gray-500 text-sm leading-relaxed">Sí. El título de Enfermero/a Profesional otorgado por la Escuela Superior de Enfermería de Cañada de Gómez tiene validez en todo el territorio argentino, respaldado por el Gobierno de la Provincia de Santa Fe.</p>
+          </div>
+        </div>
+
+        <div class="faq-item bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-sm">
+          <button class="faq-btn w-full flex items-center justify-between gap-4 p-5 text-left font-semibold text-oscuro text-sm cursor-pointer bg-transparent border-0">
+            <span>¿Cuándo son los períodos de inscripción?</span>
+            <em class="faq-icon text-verde text-2xl not-italic shrink-0">+</em>
+          </button>
+          <div class="faq-answer">
+            <p class="px-5 pb-5 text-gray-500 text-sm leading-relaxed">Las inscripciones se realizan generalmente entre los meses de noviembre y febrero para el ciclo lectivo siguiente. Te recomendamos contactarnos por WhatsApp o mail para recibir información actualizada sobre fechas y requisitos.</p>
+          </div>
+        </div>
+
+        <div class="faq-item bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-sm">
+          <button class="faq-btn w-full flex items-center justify-between gap-4 p-5 text-left font-semibold text-oscuro text-sm cursor-pointer bg-transparent border-0">
+            <span>¿Qué pasa si no tengo el título secundario todavía?</span>
+            <em class="faq-icon text-verde text-2xl not-italic shrink-0">+</em>
+          </button>
+          <div class="faq-answer">
+            <p class="px-5 pb-5 text-gray-500 text-sm leading-relaxed">Podés inscribirte presentando una constancia de título en trámite. Deberás regularizar la situación durante el primer año de cursada. Consultanos para más detalles.</p>
+          </div>
+        </div>
+
+        <div class="faq-item bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-sm">
+          <button class="faq-btn w-full flex items-center justify-between gap-4 p-5 text-left font-semibold text-oscuro text-sm cursor-pointer bg-transparent border-0">
+            <span>¿Hay cupos limitados?</span>
+            <em class="faq-icon text-verde text-2xl not-italic shrink-0">+</em>
+          </button>
+          <div class="faq-answer">
+            <p class="px-5 pb-5 text-gray-500 text-sm leading-relaxed">Los cupos son limitados y se asignan por orden de inscripción. Te recomendamos acercarte a la escuela o contactarnos apenas comience el período de inscripción para asegurar tu lugar.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="bg-[#0b1220] text-slate-300" role="contentinfo" id="contacto">
+  <div class="max-w-[1120px] w-[92%] mx-auto grid gap-8 py-12 lg:grid-cols-[1.3fr_.7fr]">
+
+    <!-- Mapa -->
     <div>
-      
-      <p>
-        La Escuela Superior de Enfermería brinda una educación integral, innovadora y de avanzada en el área de Enfermería, es por ello que el Hospital San José, con más de 130 años de trayectoria, es el centro de formación de los estudiantes.
-        Los alumnos, el cuerpo docente y el equipo de salud, establecen una relación de roles activos y son los protagonistas del proceso
-        enseñanza aprendizaje.
-      </p>
-      <br>
-      <p>
-        El objetivo de nuestra Escuela es formar profesionales autónomos, con identidad profesional, cuya responsabilidad y actuación se centre en la promoción, protección, recuperación y rehabilitación de la salud del individuo, familia y comunidad y además poseer un grado de competencia que le permita tomar decisiones y compartir responsabilidades con los demás miembros del equipo de salud.
-        Las incumbencias abarcan funciones en lo asistencial, la docencia, la investigación y el gerenciamiento de los servicios de enfermería tanto en Centros Asistenciales de baja, mediana o alta complejidad como en Instituciones formadores de este Recurso Humano.
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- ============================= -->
-<!-- NUEVO: TIRA MEDIA — 3 características -->
-<!-- ============================= -->
-<section class="strip" aria-label="Características de la carrera">
-  <div class="container strip__grid">
-    <div class="strip__item">
-      <h3>Duración</h3>
-      <p>3 años • Turno mañana</p>
-    </div>
-    <div class="strip__item">
-      <h3>Prácticas</h3>
-      <p>Hospital público y centros de salud</p>
-    </div>
-    <div class="strip__item">
-      <h3>Título</h3>
-      <p>Enfermero/a Profesional</p>
-    </div>
-  </div>
-</section>
-
-<!-- ============================= -->
-<!-- NUEVO: SECTION 4 — Plan de estudio (3 columnas) -->
-<!-- ============================= -->
-<section class="section" id="section_3" aria-labelledby="plan-estudio">
-  <div class="container">
-    <h2 id="plan-estudio" class="section__title">Plan de Estudio</h2>
-
-    <div class="plan__grid">
-      <article class="plan__col">
-        <h3>Primer Año</h3>
-        <ul class="list">
-          <li>Comunicación</li>
-          <li>Biología Humana I</li>
-          <li>Sujeto, Cultura y Sociedad I</li>
-          <li>Cuidados de Enfermería en la Comunidad y Familia</li>
-          <li>Fundamento del Cuidado en Enfermería</li>
-          <li>Salud Pública</li>
-          <li>Unidad de Definición Institucional I</li>
-          <li>Práctica Profesionalizante</li>
-        </ul>
-      </article>
-
-      <article class="plan__col">
-        <h3>Segundo Año</h3>
-        <ul class="list">
-          <li>Problemáticas Socio Contemporáneas</li>
-          <li>Unidad de Definición Institucional II</li>
-          <li>Informática en Salud</li>
-          <li>Biología Humana II</li>
-          <li>Sujeto, Cultura y Sociedad II</li>
-          <li>Bioseguridad y Medio Ambiente en el Trabajo</li>
-          <li>Cuidados de Enfermería a los Adultos y Adultos Mayores</li>
-          <li>Farmacología en Enfermería</li>
-          <li>Práctica Profesionalizante II</li>
-        </ul>
-      </article>
-
-      <article class="plan__col">
-        <h3>Tercer Año</h3>
-        <ul class="list">
-          <li>Ética y Responsabilidad Social</li>
-          <li>Derecho y Legislación Laboral</li>
-          <li>Inglés Técnico</li>
-          <li>Organización y Gestión en Instituciones de Salud</li>
-          <li>Investigación en Enfermería</li>
-          <li>Cuidados de Enfermería en Salud Mental</li>
-          <li>Cuidados de Enfermería al Niño y al Adolescente</li>
-          <li>Práctica Profesionalizante III</li>
-        </ul>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ============================= -->
-<!-- NUEVO: SECTION 5 — Requisitos (izq) + Imagen (der) -->
-<!-- ============================= -->
-<section id="inscripcion" class="section" aria-labelledby="requisitos">
-  <div class="container grid-2 v-center" >
-    <div class="requisitos_contenedor">
-      <h2 id="requisitos" class="section__title">Requisitos para inscribirse</h2>
-      <ul class="list">
-        <li>DNI y fotocopia</li>
-        <li>Título secundario o constancia de título en trámite</li>
-        <li>Certificado de Salud</li>
-        <li>Foto 4x4</li>
-      </ul>
-      <a class="btn_pc" href="#contacto">Consultar inscripción</a>
-    </div>
-    <div>
-      <img src="/assets/img/inscripcion.jpeg" alt="Estudiantes realizando la inscripción" class="img-cover" />
-    </div>
-    
-  </div>
-  <div class="contenedor_boton">
-    <a class="btn" href="#contacto">Consultar inscripción</a>
-  </div>
-  
-</section>
-
-<!-- ============================= -->
-<!-- NUEVO: FOOTER con mapa + info + logos -->
-<!-- ============================= -->
-<footer class="footer" role="contentinfo" id="contacto">
-  <div class="container footer__grid">
-    <div class="footer__map">
-      <!-- Reemplazá el src por el embed real de Google Maps -->
-      <iframe 
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3352.579923694938!2d-61.398930158537944!3d-32.82989371935869!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95c9de66345ca2c1%3A0x2be39cd0a0156829!2sHospital%20San%20Jose!5e0!3m2!1ses!2sar!4v1761312171616!5m2!1ses!2sar"
-      width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+      <p class="text-xs text-slate-500 uppercase tracking-widest font-semibold mb-3">Ubicación</p>
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3352.579923694938!2d-61.398930158537944!3d-32.82989371935869!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95c9de66345ca2c1%3A0x2be39cd0a0156829!2sHospital%20San%20Jose!5e0!3m2!1ses!2sar!4v1761312171616!5m2!1ses!2sar"
+        class="w-full h-52 border-0 rounded-xl" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
       </iframe>
     </div>
 
-    <div class="footer__info">
-      <div class="footer__logos">
-        <img src="/assets/img/logo-escuela.png" alt="Escuela Superior de Enfermería" class="brand__logo" />
+    <!-- Info de contacto -->
+    <div class="flex flex-col justify-between gap-6">
+
+      <!-- Logo ESE -->
+      <div class="h-14 flex items-center">
+        <img src="/assets/img/logo-escuela.png" alt="Escuela Superior de Enfermería · Cañada de Gómez" class="h-full w-auto max-w-[170px] object-contain object-left" />
       </div>
-      <div class="footer_cont">
-        <div class="footer_item">
-          <img src="img/icono-mail.png" alt="Correo" href="mailto:escuela@ejemplo.edu.ar" class="footer_link"/>
-          <p>uaecdadegomez@hotmail.com</p>
-        </div>
 
-        <div class="footer_item">
-          <img src="img/icono-tel.png" alt="Teléfono" />
-          <p>+54 9 3471 429150</p>
-        </div>
-
-        <div class="footer_item">
-          <img src="img/icono-ig.png" alt="Instagram" />
-          <p>@asdasdasd</p>
-        </div>
-
+      <!-- Contacto -->
+      <div class="flex flex-col gap-3">
+        <a href="mailto:uaecdadegomez@hotmail.com" class="flex items-center gap-2.5 text-slate-300 no-underline text-sm hover:text-white transition-colors">
+          <svg class="w-5 h-5 shrink-0 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25H4.5a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5H4.5a2.25 2.25 0 0 0-2.25 2.25m19.5 0-9.75 6.75L2.25 6.75"/></svg>
+          uaecdadegomez@hotmail.com
+        </a>
+        <a href="tel:+5493471429150" class="flex items-center gap-2.5 text-slate-300 no-underline text-sm hover:text-white transition-colors">
+          <svg class="w-5 h-5 shrink-0 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z"/></svg>
+          +54 9 3471 429150
+        </a>
+        <a href="https://instagram.com/asdasdasd" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2.5 text-slate-300 no-underline text-sm hover:text-white transition-colors">
+          <svg class="w-5 h-5 shrink-0 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+          @asdasdasd
+        </a>
+        <a href="https://wa.me/5493471429150" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2.5 text-slate-300 no-underline text-sm hover:text-white transition-colors">
+          <svg class="w-5 h-5 shrink-0 text-slate-500" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+          WhatsApp
         </a>
       </div>
+
+      <!-- Logo Santa Fe con etiqueta -->
+      <div class="border-t border-white/10 pt-4">
+        <p class="text-[10px] text-slate-600 uppercase tracking-widest mb-2">Institución pública provincial</p>
+        <div class="h-9 flex items-center">
+          <img src="/assets/img/logo-santafe.png" alt="Gobierno de Santa Fe" class="h-full w-auto max-w-[130px] object-contain object-left" />
+        </div>
       </div>
 
-      <div class="footer__sfe">
-        <img src="assets/img/logo-santafe.png" alt="Gobierno de Santa Fe" />
-      </div>
     </div>
+
   </div>
 
-  <div class="footer__legal">
-    <div class="container">
-      <small>© <span id="year"></span> Escuela Superior de Enfermería. Todos los derechos reservados.</small>
+  <div class="border-t border-white/[.08] py-4 text-[.8rem] text-slate-500">
+    <div class="max-w-[1120px] w-[92%] mx-auto flex flex-col sm:flex-row justify-between gap-2">
+      <small>© <span id="year"></span> Escuela Superior de Enfermería · Cañada de Gómez. Todos los derechos reservados.</small>
+      <small>Gobierno de la Provincia de Santa Fe</small>
     </div>
   </div>
 </footer>
 
-<script src="js/main.js"></script>
+
+<!-- Botón volver arriba -->
+<button id="to-top" class="fixed bottom-6 right-6 z-[100] w-11 h-11 rounded-full bg-verde text-white border-0 text-lg cursor-pointer flex items-center justify-center shadow-[0_4px_12px_rgba(0,0,0,.3)] hover:brightness-[.88]" aria-label="Volver al inicio">↑</button>
+
+<!-- Botón WhatsApp flotante -->
+<a href="https://wa.me/5493471429150" target="_blank" rel="noopener noreferrer"
+   class="fixed bottom-6 left-6 z-[100] w-14 h-14 rounded-full bg-[#25d366] text-white flex items-center justify-center shadow-[0_4px_16px_rgba(37,211,102,.45)] hover:scale-110 transition-transform duration-200"
+   aria-label="Contactar por WhatsApp">
+  <svg class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+</a>
+
+<script type="module" src="/js/main.js"></script>
 </body>
 </html>
