@@ -139,6 +139,34 @@
     </div>
   </section>
 
+  <!-- ==================== GALERÍA ==================== -->
+  <section class="reveal py-10 lg:py-14 bg-claro" aria-label="Galería de imágenes">
+    <div class="max-w-[1120px] w-[92%] mx-auto">
+      <div class="carousel relative overflow-hidden rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,.12)]">
+        <div class="carousel__track flex gap-1" id="carouselTrack">
+          <div class="carousel__slide">
+            <img src="/assets/img/galeria-1.webp" alt="Instalaciones ESE" class="w-full aspect-[4/3] object-cover" />
+          </div>
+          <div class="carousel__slide">
+            <img src="/assets/img/galeria-2.webp" alt="Instalaciones ESE" class="w-full aspect-[4/3] object-cover" />
+          </div>
+          <div class="carousel__slide">
+            <img src="/assets/img/bannerenfermeria.webp" alt="Instalaciones ESE" class="w-full aspect-[4/3] object-cover" />
+          </div>
+        </div>
+
+        <button class="carousel__btn carousel__btn--prev" aria-label="Imagen anterior">
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5"/></svg>
+        </button>
+        <button class="carousel__btn carousel__btn--next" aria-label="Imagen siguiente">
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"><path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"/></svg>
+        </button>
+
+        <div class="carousel__dots" id="carouselDots"></div>
+      </div>
+    </div>
+  </section>
+
   <!-- ==================== CARRERA E HISTORIA ==================== -->
   <section class="reveal py-16 lg:py-24 bg-oscuro text-white" id="section_2" aria-labelledby="carrera-historia">
     <div class="max-w-[1120px] w-[92%] mx-auto">

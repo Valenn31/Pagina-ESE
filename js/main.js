@@ -64,6 +64,96 @@ if (toTop) {
     });
 }
 
+// Carrusel infinito
+(function () {
+    const track = document.getElementById('carouselTrack');
+    const dotsWrap = document.getElementById('carouselDots');
+    if (!track || !dotsWrap) return;
+
+    const origSlides = Array.from(track.children);
+    const total = origSlides.length;
+
+    // Clonar slides al final para loop infinito hacia adelante
+    origSlides.forEach(s => track.appendChild(s.cloneNode(true)));
+
+    let current = 0;
+    let transitioning = false;
+    let timer;
+
+    origSlides.forEach((_, i) => {
+        const dot = document.createElement('button');
+        dot.className = 'carousel__dot' + (i === 0 ? ' active' : '');
+        dot.setAttribute('aria-label', `Ir a imagen ${i + 1}`);
+        dot.addEventListener('click', () => { stopAuto(); goTo(i); startAuto(); });
+        dotsWrap.appendChild(dot);
+    });
+
+    function stepPx() {
+        const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+        return track.children[0].offsetWidth + gap;
+    }
+
+    function updateDots() {
+        const real = current % total;
+        dotsWrap.querySelectorAll('.carousel__dot').forEach((d, i) => d.classList.toggle('active', i === real));
+    }
+
+    function setPos(idx, animate) {
+        if (!animate) {
+            track.style.transition = 'none';
+            track.getBoundingClientRect(); // fuerza reflow para que el cambio sea inmediato
+        } else {
+            track.style.transition = '';
+        }
+        track.style.transform = `translateX(-${idx * stepPx()}px)`;
+    }
+
+    function goTo(n) {
+        if (transitioning) return;
+        // Ir hacia atrás desde el inicio: salto instantáneo al final real
+        if (n < 0) {
+            setPos(total - 1, false);
+            current = total - 1;
+            updateDots();
+            return;
+        }
+        transitioning = true;
+        current = n;
+        setPos(current, true);
+        updateDots();
+    }
+
+    // Cuando termina la animación: si entramos en zona de clones, reset invisible
+    track.addEventListener('transitionend', () => {
+        transitioning = false;
+        if (current >= total) {
+            current = current - total;
+            setPos(current, false);
+        }
+    });
+
+    function startAuto() { timer = setInterval(() => goTo(current + 1), 4500); }
+    function stopAuto()  { clearInterval(timer); }
+
+    const carousel = track.closest('.carousel');
+    carousel.querySelector('.carousel__btn--prev').addEventListener('click', () => { stopAuto(); goTo(current - 1); startAuto(); });
+    carousel.querySelector('.carousel__btn--next').addEventListener('click', () => { stopAuto(); goTo(current + 1); startAuto(); });
+
+    let touchStartX = 0;
+    carousel.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+    carousel.addEventListener('touchend', e => {
+        const diff = touchStartX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 40) { stopAuto(); goTo(diff > 0 ? current + 1 : current - 1); startAuto(); }
+    });
+
+    window.addEventListener('resize', () => setPos(current, false), { passive: true });
+    carousel.addEventListener('mouseenter', stopAuto);
+    carousel.addEventListener('mouseleave', startAuto);
+
+    setPos(0, false);
+    startAuto();
+})();
+
 // Pestañas (sección Carrera / Historia)
 document.querySelectorAll('.tab-btn').forEach(btn => {
     btn.addEventListener('click', () => {

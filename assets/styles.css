@@ -104,6 +104,64 @@
   color: var(--color-verde);
 }
 
+/* Carrusel */
+.carousel__track {
+  transition: transform .5s cubic-bezier(.4,0,.2,1);
+}
+.carousel__slide {
+  flex: none;
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .carousel__slide {
+    width: calc(50% - 2px);
+  }
+}
+.carousel__btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--color-verde);
+  border: none;
+  color: white;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: filter .2s ease;
+  z-index: 10;
+  box-shadow: 0 2px 8px rgba(0,0,0,.18);
+}
+.carousel__btn:hover { filter: brightness(.88); }
+.carousel__btn--prev { left: .75rem; }
+.carousel__btn--next { right: .75rem; }
+.carousel__dots {
+  position: absolute;
+  bottom: .75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: .45rem;
+  z-index: 10;
+}
+.carousel__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(0,0,0,.2);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background .25s ease, transform .25s ease;
+}
+.carousel__dot.active {
+  background: var(--color-verde);
+  transform: scale(1.35);
+}
+
 /* Pestañas (sección oscura) */
 .tab-btn {
   background: none;
