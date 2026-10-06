@@ -22,476 +22,487 @@
       --success: #22c55e;
     }
 
-    body {
-      font-family: 'Inter', system-ui, sans-serif;
-      background: var(--claro);
-      color: var(--texto);
-      min-height: 100vh;
-    }
+    body { font-family: 'Inter', system-ui, sans-serif; background: var(--claro); color: var(--texto); min-height: 100vh; }
 
-    /* ---- LOGIN ---- */
-    #login-screen {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 1.5rem;
-    }
+    /* LOGIN */
+    #login-screen { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 1.5rem; }
 
-    .login-card {
-      background: white;
-      border-radius: 1.25rem;
-      padding: 2.5rem 2rem;
-      width: 100%;
-      max-width: 380px;
-      box-shadow: 0 8px 32px rgba(0,0,0,.1);
-    }
+    .login-card { background: white; border-radius: 1.25rem; padding: 2.5rem 2rem; width: 100%; max-width: 380px; box-shadow: 0 8px 32px rgba(0,0,0,.1); }
 
-    .login-card .logo {
-      width: 56px;
-      height: 56px;
-      background: var(--verde);
-      border-radius: .875rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 1.5rem;
-    }
-
+    .login-card .logo { width: 56px; height: 56px; background: var(--verde); border-radius: .875rem; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; }
     .login-card .logo svg { width: 28px; height: 28px; fill: white; }
+    .login-card h1 { font-size: 1.25rem; font-weight: 700; color: var(--oscuro); margin-bottom: .25rem; }
+    .login-card > p { font-size: .875rem; color: var(--gris); margin-bottom: 1.75rem; }
 
-    .login-card h1 {
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: var(--oscuro);
-      margin-bottom: .25rem;
+    label { display: block; font-size: .8125rem; font-weight: 600; color: var(--texto); margin-bottom: .4rem; }
+
+    input[type="password"], input[type="url"], input[type="text"] {
+      width: 100%; border: 1.5px solid var(--borde); border-radius: .625rem;
+      padding: .65rem .875rem; font-size: .9375rem; font-family: inherit;
+      color: var(--texto); background: var(--claro); outline: none; transition: border-color .15s ease;
     }
-
-    .login-card p {
-      font-size: .875rem;
-      color: var(--gris);
-      margin-bottom: 1.75rem;
-    }
-
-    label {
-      display: block;
-      font-size: .8125rem;
-      font-weight: 600;
-      color: var(--texto);
-      margin-bottom: .4rem;
-    }
-
-    input[type="password"],
-    input[type="url"],
-    input[type="text"] {
-      width: 100%;
-      border: 1.5px solid var(--borde);
-      border-radius: .625rem;
-      padding: .65rem .875rem;
-      font-size: .9375rem;
-      font-family: inherit;
-      color: var(--texto);
-      background: var(--claro);
-      outline: none;
-      transition: border-color .15s ease;
-    }
-
     input:focus { border-color: var(--verde); background: white; }
 
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: .5rem;
-      border: none;
-      border-radius: .625rem;
-      padding: .7rem 1.25rem;
-      font-family: inherit;
-      font-size: .9375rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: filter .15s ease;
-    }
-
-    .btn-primary {
-      background: var(--verde);
-      color: white;
-      width: 100%;
-      margin-top: 1rem;
-    }
-
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; border: none; border-radius: .625rem; padding: .7rem 1.25rem; font-family: inherit; font-size: .9375rem; font-weight: 600; cursor: pointer; transition: filter .15s ease; }
+    .btn-primary { background: var(--verde); color: white; width: 100%; margin-top: 1rem; }
     .btn-primary:hover { filter: brightness(.9); }
     .btn-primary:disabled { opacity: .6; cursor: not-allowed; filter: none; }
-
-    .btn-sm {
-      padding: .55rem 1rem;
-      font-size: .875rem;
-    }
-
-    .btn-outline {
-      background: white;
-      color: var(--texto);
-      border: 1.5px solid var(--borde);
-    }
-
+    .btn-sm { padding: .55rem 1rem; font-size: .875rem; }
+    .btn-outline { background: white; color: var(--texto); border: 1.5px solid var(--borde); }
     .btn-outline:hover { background: var(--claro); }
+    .btn-danger { background: #fef2f2; color: var(--error); border: 1.5px solid #fecaca; }
+    .btn-danger:hover { background: #fee2e2; }
 
-    .msg {
-      font-size: .8125rem;
-      margin-top: .75rem;
-      min-height: 1.1em;
-      display: flex;
-      align-items: center;
-      gap: .4rem;
-    }
-
+    .msg { font-size: .8125rem; margin-top: .75rem; min-height: 1.1em; display: flex; align-items: center; gap: .4rem; }
     .msg.error { color: var(--error); }
     .msg.success { color: var(--success); }
 
-    /* ---- DASHBOARD ---- */
+    /* DASHBOARD */
     #dashboard { display: none; min-height: 100vh; }
 
-    .topbar {
-      background: var(--oscuro);
-      color: white;
-      padding: 1rem 1.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-    }
-
+    .topbar { background: var(--oscuro); color: white; padding: 1rem 1.5rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
     .topbar h1 { font-size: 1rem; font-weight: 700; }
     .topbar span { font-size: .8125rem; color: rgba(255,255,255,.5); }
-
-    .topbar-right { display: flex; align-items: center; gap: .75rem; }
-
-    .btn-logout {
-      background: rgba(255,255,255,.1);
-      color: white;
-      border: none;
-      border-radius: .5rem;
-      padding: .4rem .85rem;
-      font-size: .8125rem;
-      font-weight: 600;
-      cursor: pointer;
-      font-family: inherit;
-      transition: background .15s ease;
-    }
-
+    .btn-logout { background: rgba(255,255,255,.1); color: white; border: none; border-radius: .5rem; padding: .4rem .85rem; font-size: .8125rem; font-weight: 600; cursor: pointer; font-family: inherit; transition: background .15s ease; }
     .btn-logout:hover { background: rgba(255,255,255,.18); }
 
-    .main-content {
-      max-width: 700px;
-      margin: 0 auto;
-      padding: 2rem 1.5rem 4rem;
-    }
+    .main-content { max-width: 700px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
 
-    .card {
-      background: white;
-      border-radius: 1rem;
-      padding: 1.75rem;
-      box-shadow: 0 2px 12px rgba(0,0,0,.06);
-      margin-bottom: 1.5rem;
-    }
+    .card { background: white; border-radius: 1rem; padding: 1.75rem; box-shadow: 0 2px 12px rgba(0,0,0,.06); margin-bottom: 1.5rem; }
 
-    .card-header {
-      display: flex;
-      align-items: flex-start;
-      gap: 1rem;
-      margin-bottom: 1.25rem;
-    }
-
-    .card-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: .75rem;
-      background: rgba(25,166,147,.12);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      shrink: 0;
-    }
-
+    .card-header { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.25rem; }
+    .card-icon { width: 44px; height: 44px; border-radius: .75rem; background: rgba(25,166,147,.12); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
     .card-icon svg { width: 22px; height: 22px; stroke: var(--verde); fill: none; stroke-width: 2; }
-
     .card-title { font-size: 1rem; font-weight: 700; color: var(--oscuro); margin-bottom: .2rem; }
     .card-desc { font-size: .8125rem; color: var(--gris); line-height: 1.5; }
 
     .field-row { display: flex; gap: .75rem; align-items: flex-end; }
     .field-row > div { flex: 1; }
 
-    .current-value {
-      font-size: .8125rem;
-      color: var(--gris);
-      margin-top: .5rem;
-      word-break: break-all;
+    /* Contador */
+    .count-bar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+    .count-text { font-size: .8125rem; color: var(--gris); }
+    .count-text strong { color: var(--texto); }
+    .count-full { color: var(--error); }
+
+    /* Grid de imágenes */
+    .img-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: .75rem; margin-bottom: 1.25rem; }
+
+    .img-card { position: relative; border-radius: .75rem; overflow: hidden; aspect-ratio: 4/3; background: var(--claro); border: 1.5px solid var(--borde); }
+    .img-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .img-card .delete-btn {
+      position: absolute; top: .4rem; right: .4rem;
+      background: rgba(239,68,68,.9); color: white; border: none;
+      border-radius: .4rem; width: 28px; height: 28px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; transition: opacity .15s ease;
+      font-size: .875rem; font-weight: 700; line-height: 1;
     }
+    .img-card:hover .delete-btn { opacity: 1; }
+    .img-card .img-num { position: absolute; bottom: .4rem; left: .4rem; background: rgba(0,0,0,.55); color: white; font-size: .7rem; font-weight: 600; border-radius: .3rem; padding: .1rem .35rem; }
 
-    .current-value a { color: var(--verde); text-decoration: underline; }
+    /* Estado vacío */
+    .empty-state { text-align: center; padding: 2rem 1rem; color: var(--gris); font-size: .875rem; border: 1.5px dashed var(--borde); border-radius: .75rem; margin-bottom: 1.25rem; }
+    .empty-state svg { width: 40px; height: 40px; stroke: var(--borde); fill: none; stroke-width: 1.5; margin-bottom: .75rem; }
 
-    .badge {
-      display: inline-block;
-      background: rgba(25,166,147,.12);
-      color: var(--verde);
-      border-radius: 999px;
-      font-size: .75rem;
-      font-weight: 600;
-      padding: .15rem .65rem;
-      margin-left: .4rem;
+    /* Upload area */
+    .upload-area { position: relative; }
+    .upload-btn-label {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: var(--verde); color: white; border-radius: .625rem;
+      padding: .65rem 1.25rem; font-size: .9375rem; font-weight: 600;
+      cursor: pointer; transition: filter .15s ease;
     }
+    .upload-btn-label:hover { filter: brightness(.9); }
+    .upload-btn-label.disabled { opacity: .5; pointer-events: none; }
+    #file-input { position: absolute; opacity: 0; width: 0; height: 0; }
 
-    .badge.none { background: rgba(148,163,184,.12); color: var(--gris); }
+    /* Progress */
+    .upload-progress { margin-top: .75rem; }
+    .progress-bar-wrap { background: var(--borde); border-radius: 999px; height: 6px; overflow: hidden; margin-top: .4rem; }
+    .progress-bar { height: 100%; background: var(--verde); border-radius: 999px; transition: width .2s ease; }
 
-    .loader {
-      display: inline-block;
-      width: 16px; height: 16px;
-      border: 2px solid rgba(255,255,255,.4);
-      border-top-color: white;
-      border-radius: 50%;
-      animation: spin .6s linear infinite;
-      vertical-align: middle;
-    }
-
+    /* Loader */
+    .loader { display: inline-block; width: 16px; height: 16px; border: 2px solid rgba(255,255,255,.4); border-top-color: white; border-radius: 50%; animation: spin .6s linear infinite; vertical-align: middle; }
+    .loader-dark { border-color: rgba(0,0,0,.15); border-top-color: var(--verde); }
     @keyframes spin { to { transform: rotate(360deg); } }
+
+    .badge { display: inline-block; border-radius: 999px; font-size: .75rem; font-weight: 600; padding: .15rem .65rem; margin-left: .4rem; }
+    .badge-green { background: rgba(25,166,147,.12); color: var(--verde); }
+    .badge-gray { background: rgba(148,163,184,.12); color: var(--gris); }
   </style>
 </head>
 <body>
 
-  <!-- ===================== LOGIN ===================== -->
-  <div id="login-screen">
-    <div class="login-card">
-      <div class="logo">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 2a5 5 0 1 1 0 10A5 5 0 0 1 12 2zm0 12c-5.33 0-8 2.67-8 4v2h16v-2c0-1.33-2.67-4-8-4z"/>
-        </svg>
-      </div>
-      <h1>Panel de administración</h1>
-      <p>Escuela Superior de Enfermería · Cañada de Gómez</p>
-      <form id="login-form" autocomplete="off" novalidate>
-        <label for="password">Contraseña</label>
-        <input type="password" id="password" placeholder="Ingresá la contraseña" autocomplete="current-password" required />
-        <button class="btn btn-primary" type="submit" id="login-btn">Ingresar</button>
-        <p class="msg error" id="login-error" aria-live="polite" style="display:none;"></p>
-      </form>
+<!-- LOGIN -->
+<div id="login-screen">
+  <div class="login-card">
+    <div class="logo">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2a5 5 0 1 1 0 10A5 5 0 0 1 12 2zm0 12c-5.33 0-8 2.67-8 4v2h16v-2c0-1.33-2.67-4-8-4z"/>
+      </svg>
     </div>
+    <h1>Panel de administración</h1>
+    <p>Escuela Superior de Enfermería · Cañada de Gómez</p>
+    <form id="login-form" autocomplete="off" novalidate>
+      <label for="password">Contraseña</label>
+      <input type="password" id="password" placeholder="Ingresá la contraseña" autocomplete="current-password" required />
+      <button class="btn btn-primary" type="submit" id="login-btn">Ingresar</button>
+      <p class="msg error" id="login-error" aria-live="polite" style="display:none;"></p>
+    </form>
   </div>
+</div>
 
-  <!-- ===================== DASHBOARD ===================== -->
-  <div id="dashboard">
-    <header class="topbar">
-      <div>
-        <h1>Panel de administración</h1>
-        <span>Escuela Superior de Enfermería</span>
-      </div>
-      <div class="topbar-right">
-        <button class="btn-logout" id="logout-btn">Cerrar sesión</button>
-      </div>
-    </header>
+<!-- DASHBOARD -->
+<div id="dashboard">
+  <header class="topbar">
+    <div>
+      <h1>Panel de administración</h1>
+      <span>Escuela Superior de Enfermería</span>
+    </div>
+    <button class="btn-logout" id="logout-btn">Cerrar sesión</button>
+  </header>
 
-    <main class="main-content">
+  <main class="main-content">
 
-      <!-- INSCRIPCIÓN -->
-      <div class="card">
-        <div class="card-header">
-          <div class="card-icon">
-            <svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
-          </div>
-          <div>
-            <div class="card-title">Link de inscripción</div>
-            <div class="card-desc">Es el link que se abre cuando un visitante hace clic en el botón <strong>"Consultar inscripción"</strong>. La provincia lo cambia cada año. Pegá acá el nuevo link.</div>
-          </div>
+    <!-- LINK DE INSCRIPCIÓN -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
         </div>
+        <div>
+          <div class="card-title">Link de inscripción</div>
+          <div class="card-desc">Es el link que se abre cuando un visitante hace clic en <strong>"Consultar inscripción"</strong>. La provincia lo cambia cada año. Pegá acá el nuevo link.</div>
+        </div>
+      </div>
 
-        <div id="link-loading" style="color:var(--gris);font-size:.875rem;">Cargando…</div>
+      <div id="link-loading" style="color:var(--gris);font-size:.875rem;">Cargando…</div>
 
-        <div id="link-section" style="display:none;">
-          <div style="margin-bottom:1rem;">
-            <div style="font-size:.8125rem;color:var(--gris);margin-bottom:.35rem;">Link actual:</div>
-            <div id="current-link-display" style="font-size:.875rem;word-break:break-all;"></div>
-          </div>
-
-          <form id="link-form" novalidate>
-            <label for="inscription-url">Nuevo link</label>
-            <div class="field-row">
-              <div>
-                <input type="url" id="inscription-url" placeholder="https://inscripciones.santafe.gob.ar/..." />
-              </div>
-              <button class="btn btn-primary btn-sm" type="submit" id="link-btn" style="white-space:nowrap;width:auto;margin-top:0;">
-                Guardar
-              </button>
+      <div id="link-section" style="display:none;">
+        <div style="margin-bottom:1rem;">
+          <div style="font-size:.8125rem;color:var(--gris);margin-bottom:.35rem;">Link actual:</div>
+          <div id="current-link-display" style="font-size:.875rem;word-break:break-all;"></div>
+        </div>
+        <form id="link-form" novalidate>
+          <label for="inscription-url">Nuevo link</label>
+          <div class="field-row">
+            <div>
+              <input type="url" id="inscription-url" placeholder="https://inscripciones.santafe.gob.ar/..." />
             </div>
-            <p class="msg" id="link-msg" aria-live="polite"></p>
-          </form>
+            <button class="btn btn-primary btn-sm" type="submit" id="link-btn" style="white-space:nowrap;width:auto;margin-top:0;">Guardar</button>
+          </div>
+          <p class="msg" id="link-msg" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+
+    <!-- CARRUSEL DE IMÁGENES -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+        </div>
+        <div>
+          <div class="card-title">Imágenes del carrusel</div>
+          <div class="card-desc">Subí las fotos que quieras mostrar en la galería de la página principal. Máximo <strong>10 imágenes</strong> (JPG, PNG o WebP, hasta 5 MB cada una). Para cambiar el orden, borrá y volvé a subir.</div>
         </div>
       </div>
 
-    </main>
-  </div>
+      <div id="carousel-loading" style="color:var(--gris);font-size:.875rem;">Cargando…</div>
 
-  <script>
-    const API = '/.netlify/functions/site-config';
-    let password = '';
-    let config = { inscriptionUrl: '', carouselImages: [] };
+      <div id="carousel-section" style="display:none;">
+        <div class="count-bar">
+          <span class="count-text" id="img-count-text">0 / 10 imágenes</span>
+        </div>
 
-    // ---- LOGIN ----
-    const loginScreen = document.getElementById('login-screen');
-    const dashboard   = document.getElementById('dashboard');
-    const loginForm   = document.getElementById('login-form');
-    const loginBtn    = document.getElementById('login-btn');
-    const loginError  = document.getElementById('login-error');
-    const logoutBtn   = document.getElementById('logout-btn');
+        <div id="img-grid" class="img-grid"></div>
+        <div id="img-empty" class="empty-state" style="display:none;">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+          <div>Todavía no hay imágenes en el carrusel.</div>
+          <div style="margin-top:.25rem;">Usá el botón de abajo para subir la primera.</div>
+        </div>
 
-    loginForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const pw = document.getElementById('password').value.trim();
-      if (!pw) return;
+        <div class="upload-area">
+          <label class="upload-btn-label" id="upload-label" for="file-input">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            Subir imagen
+          </label>
+          <input type="file" id="file-input" accept="image/jpeg,image/png,image/webp,image/gif" />
 
-      loginBtn.disabled = true;
-      loginBtn.innerHTML = '<span class="loader"></span>';
-      loginError.style.display = 'none';
+          <div id="upload-progress" class="upload-progress" style="display:none;">
+            <div style="font-size:.8125rem;color:var(--gris);" id="upload-status-text">Subiendo…</div>
+            <div class="progress-bar-wrap"><div class="progress-bar" id="progress-bar" style="width:0%"></div></div>
+          </div>
+          <p class="msg" id="upload-msg" aria-live="polite"></p>
+        </div>
+      </div>
+    </div>
 
-      try {
-        const res = await fetch(API, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'x-admin-password': pw },
-          body: JSON.stringify(config),
-        });
+  </main>
+</div>
 
-        if (res.status === 401) {
-          showLoginError('Contraseña incorrecta. Intentá de nuevo.');
-          return;
-        }
+<script>
+  const API_CONFIG = '/.netlify/functions/site-config';
+  const API_IMG    = '/.netlify/functions/carousel-image';
+  let password = '';
+  let config = { inscriptionUrl: '', carouselImages: [] };
 
-        if (res.status === 404) {
-          showLoginError('El panel solo funciona en el sitio publicado en Netlify, no en desarrollo local.');
-          return;
-        }
+  /* ========== LOGIN ========== */
+  const loginScreen = document.getElementById('login-screen');
+  const dashboard   = document.getElementById('dashboard');
+  const loginBtn    = document.getElementById('login-btn');
+  const loginError  = document.getElementById('login-error');
 
-        if (!res.ok) throw new Error('Error de servidor');
+  document.getElementById('login-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const pw = document.getElementById('password').value.trim();
+    if (!pw) return;
 
-        password = pw;
-        sessionStorage.setItem('ese_admin_pw', pw);
-        await showDashboard();
-      } catch (err) {
-        if (err.message === 'Failed to fetch') {
-          showLoginError('No se pudo conectar. El panel solo funciona en el sitio publicado (Netlify).');
-        } else {
-          showLoginError('Error: ' + err.message);
-        }
-      } finally {
-        loginBtn.disabled = false;
-        loginBtn.textContent = 'Ingresar';
-      }
-    });
+    loginBtn.disabled = true;
+    loginBtn.innerHTML = '<span class="loader"></span>';
+    loginError.style.display = 'none';
 
-    function showLoginError(msg) {
-      loginError.textContent = msg;
-      loginError.style.display = 'flex';
+    try {
+      const res = await fetch(API_CONFIG, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'x-admin-password': pw },
+        body: JSON.stringify(config),
+      });
+
+      if (res.status === 401) { showLoginError('Contraseña incorrecta. Intentá de nuevo.'); return; }
+      if (res.status === 404) { showLoginError('El panel solo funciona en el sitio publicado en Netlify, no en desarrollo local.'); return; }
+      if (!res.ok) throw new Error('Error de servidor');
+
+      password = pw;
+      sessionStorage.setItem('ese_admin_pw', pw);
+      await showDashboard();
+    } catch (err) {
+      showLoginError(err.message === 'Failed to fetch'
+        ? 'No se pudo conectar. El panel solo funciona en Netlify.'
+        : 'Error: ' + err.message);
+    } finally {
+      loginBtn.disabled = false;
+      loginBtn.textContent = 'Ingresar';
+    }
+  });
+
+  function showLoginError(msg) {
+    loginError.textContent = msg;
+    loginError.style.display = 'flex';
+  }
+
+  document.getElementById('logout-btn').addEventListener('click', () => {
+    sessionStorage.removeItem('ese_admin_pw');
+    password = '';
+    loginScreen.style.display = 'flex';
+    dashboard.style.display = 'none';
+    document.getElementById('password').value = '';
+  });
+
+  /* ========== DASHBOARD ========== */
+  async function showDashboard() {
+    loginScreen.style.display = 'none';
+    dashboard.style.display = 'block';
+    await loadConfig();
+  }
+
+  async function loadConfig() {
+    try {
+      const res = await fetch(API_CONFIG);
+      if (!res.ok) throw new Error('Error al cargar config');
+      config = await res.json();
+    } catch {
+      config = { inscriptionUrl: '', carouselImages: [] };
+    }
+    renderLinkSection();
+    renderCarouselSection();
+  }
+
+  /* ========== LINK DE INSCRIPCIÓN ========== */
+  function renderLinkSection() {
+    document.getElementById('link-loading').style.display = 'none';
+    document.getElementById('link-section').style.display = 'block';
+
+    const display = document.getElementById('current-link-display');
+    if (config.inscriptionUrl) {
+      display.innerHTML = `<a href="${esc(config.inscriptionUrl)}" target="_blank" rel="noopener">${esc(config.inscriptionUrl)}</a> <span class="badge badge-green">Activo</span>`;
+    } else {
+      display.innerHTML = `<span style="color:var(--gris);">Sin link externo configurado</span> <span class="badge badge-gray">Usando contacto</span>`;
+    }
+    document.getElementById('inscription-url').value = config.inscriptionUrl || '';
+  }
+
+  document.getElementById('link-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const url = document.getElementById('inscription-url').value.trim();
+    const btn = document.getElementById('link-btn');
+    const msg = document.getElementById('link-msg');
+
+    if (url && !url.startsWith('http')) { setMsg(msg, 'error', 'El link debe comenzar con https://'); return; }
+
+    btn.disabled = true;
+    btn.innerHTML = '<span class="loader"></span>';
+    setMsg(msg, '', '');
+
+    try {
+      const newConfig = { ...config, inscriptionUrl: url };
+      const res = await fetch(API_CONFIG, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'x-admin-password': password },
+        body: JSON.stringify(newConfig),
+      });
+      if (!res.ok) { const d = await res.json().catch(() => ({})); throw new Error(d.error || 'Error al guardar'); }
+      config = newConfig;
+      renderLinkSection();
+      setMsg(msg, 'success', '✓ Link guardado correctamente');
+      setTimeout(() => setMsg(msg, '', ''), 4000);
+    } catch (err) {
+      setMsg(msg, 'error', err.message);
+    } finally {
+      btn.disabled = false;
+      btn.textContent = 'Guardar';
+    }
+  });
+
+  /* ========== CARRUSEL ========== */
+  function renderCarouselSection() {
+    document.getElementById('carousel-loading').style.display = 'none';
+    document.getElementById('carousel-section').style.display = 'block';
+
+    const images = config.carouselImages || [];
+    const grid   = document.getElementById('img-grid');
+    const empty  = document.getElementById('img-empty');
+    const countEl = document.getElementById('img-count-text');
+    const uploadLabel = document.getElementById('upload-label');
+
+    countEl.textContent = `${images.length} / 10 imágenes`;
+    countEl.className = 'count-text' + (images.length >= 10 ? ' count-full' : '');
+
+    if (images.length >= 10) {
+      uploadLabel.classList.add('disabled');
+    } else {
+      uploadLabel.classList.remove('disabled');
     }
 
-    logoutBtn.addEventListener('click', () => {
-      sessionStorage.removeItem('ese_admin_pw');
-      password = '';
-      loginScreen.style.display = 'flex';
-      dashboard.style.display = 'none';
-      document.getElementById('password').value = '';
-    });
+    grid.innerHTML = '';
 
-    // ---- DASHBOARD ----
-    async function showDashboard() {
-      loginScreen.style.display = 'none';
-      dashboard.style.display = 'block';
-      await loadConfig();
+    if (images.length === 0) {
+      empty.style.display = 'block';
+    } else {
+      empty.style.display = 'none';
+      images.forEach((key, idx) => {
+        const card = document.createElement('div');
+        card.className = 'img-card';
+        card.innerHTML = `
+          <img src="${API_IMG}?key=${encodeURIComponent(key)}" alt="Imagen ${idx + 1}" loading="lazy" />
+          <button class="delete-btn" title="Borrar imagen" data-key="${esc(key)}">✕</button>
+          <span class="img-num">${idx + 1}</span>
+        `;
+        card.querySelector('.delete-btn').addEventListener('click', () => deleteImage(key));
+        grid.appendChild(card);
+      });
     }
+  }
 
-    async function loadConfig() {
-      document.getElementById('link-loading').style.display = 'block';
-      document.getElementById('link-section').style.display = 'none';
+  async function deleteImage(key) {
+    if (!confirm('¿Borrar esta imagen del carrusel?')) return;
 
-      try {
-        const res = await fetch(API);
-        if (!res.ok) throw new Error('Error al cargar config');
-        config = await res.json();
-        renderLinkSection();
-      } catch {
-        document.getElementById('link-loading').textContent = 'Error al cargar la configuración.';
-      }
+    try {
+      const res = await fetch(`${API_IMG}?key=${encodeURIComponent(key)}`, {
+        method: 'DELETE',
+        headers: { 'x-admin-password': password },
+      });
+      if (!res.ok) { const d = await res.json().catch(() => ({})); throw new Error(d.error || 'Error al borrar'); }
+      config.carouselImages = config.carouselImages.filter(k => k !== key);
+      renderCarouselSection();
+    } catch (err) {
+      alert('Error al borrar: ' + err.message);
     }
+  }
 
-    function renderLinkSection() {
-      document.getElementById('link-loading').style.display = 'none';
-      document.getElementById('link-section').style.display = 'block';
+  /* ========== SUBIR IMAGEN ========== */
+  document.getElementById('file-input').addEventListener('change', async (e) => {
+    const file = e.target.files[0];
+    e.target.value = '';
+    if (!file) return;
 
-      const display = document.getElementById('current-link-display');
-      if (config.inscriptionUrl) {
-        display.innerHTML = `<a href="${escHtml(config.inscriptionUrl)}" target="_blank" rel="noopener">${escHtml(config.inscriptionUrl)}</a> <span class="badge">Activo</span>`;
-      } else {
-        display.innerHTML = `<span style="color:var(--gris);">Sin link externo configurado</span> <span class="badge none">Usando contacto</span>`;
+    const msg = document.getElementById('upload-msg');
+    const progress = document.getElementById('upload-progress');
+    const progressBar = document.getElementById('progress-bar');
+    const statusText = document.getElementById('upload-status-text');
+    const uploadLabel = document.getElementById('upload-label');
+
+    // Validación client-side
+    if (!file.type.startsWith('image/')) { setMsg(msg, 'error', 'Solo se permiten archivos de imagen'); return; }
+    if (file.size > 5 * 1024 * 1024) { setMsg(msg, 'error', 'La imagen no puede superar 5 MB'); return; }
+    if ((config.carouselImages?.length ?? 0) >= 10) { setMsg(msg, 'error', 'Límite de 10 imágenes alcanzado'); return; }
+
+    setMsg(msg, '', '');
+    uploadLabel.classList.add('disabled');
+    progress.style.display = 'block';
+    statusText.textContent = `Subiendo ${file.name}…`;
+
+    // Simulamos progreso mientras sube (XHR para progreso real)
+    let pct = 0;
+    const ticker = setInterval(() => {
+      pct = Math.min(pct + 8, 85);
+      progressBar.style.width = pct + '%';
+    }, 150);
+
+    try {
+      const res = await fetch(API_IMG, {
+        method: 'POST',
+        headers: {
+          'Content-Type': file.type,
+          'x-admin-password': password,
+          'x-filename': file.name,
+        },
+        body: file,
+      });
+
+      clearInterval(ticker);
+      progressBar.style.width = '100%';
+
+      if (!res.ok) {
+        const d = await res.json().catch(() => ({}));
+        throw new Error(d.error || 'Error al subir');
       }
 
-      document.getElementById('inscription-url').value = config.inscriptionUrl || '';
+      const { key } = await res.json();
+      config.carouselImages = [...(config.carouselImages || []), key];
+
+      statusText.textContent = '¡Subida correctamente!';
+      setTimeout(() => { progress.style.display = 'none'; progressBar.style.width = '0%'; }, 1500);
+
+      setMsg(msg, 'success', '✓ Imagen agregada al carrusel');
+      setTimeout(() => setMsg(msg, '', ''), 4000);
+
+      renderCarouselSection();
+    } catch (err) {
+      clearInterval(ticker);
+      progress.style.display = 'none';
+      progressBar.style.width = '0%';
+      setMsg(msg, 'error', err.message);
+      uploadLabel.classList.remove('disabled');
     }
+  });
 
-    // ---- GUARDAR LINK ----
-    document.getElementById('link-form').addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const url = document.getElementById('inscription-url').value.trim();
-      const btn = document.getElementById('link-btn');
-      const msg = document.getElementById('link-msg');
+  /* ========== UTILS ========== */
+  function setMsg(el, type, text) {
+    el.textContent = text;
+    el.className = 'msg ' + type;
+  }
 
-      if (url && !url.startsWith('http')) {
-        setMsg(msg, 'error', 'El link debe comenzar con https://');
-        return;
-      }
+  function esc(str) {
+    return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
 
-      btn.disabled = true;
-      btn.innerHTML = '<span class="loader"></span>';
-      setMsg(msg, '', '');
-
-      try {
-        const newConfig = { ...config, inscriptionUrl: url };
-        const res = await fetch(API, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'x-admin-password': password },
-          body: JSON.stringify(newConfig),
-        });
-
-        if (!res.ok) {
-          const data = await res.json().catch(() => ({}));
-          throw new Error(data.error || 'Error al guardar');
-        }
-
-        config = newConfig;
-        renderLinkSection();
-        setMsg(msg, 'success', '✓ Link guardado correctamente');
-        setTimeout(() => setMsg(msg, '', ''), 4000);
-      } catch (err) {
-        setMsg(msg, 'error', err.message);
-      } finally {
-        btn.disabled = false;
-        btn.textContent = 'Guardar';
-      }
-    });
-
-    // ---- UTILS ----
-    function setMsg(el, type, text) {
-      el.textContent = text;
-      el.className = 'msg ' + type;
-    }
-
-    function escHtml(str) {
-      return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-    }
-
-    // Auto-login si hay sesión guardada
-    (async () => {
-      const saved = sessionStorage.getItem('ese_admin_pw');
-      if (saved) {
-        password = saved;
-        await showDashboard();
-      }
-    })();
-  </script>
+  // Auto-login si hay sesión guardada
+  (async () => {
+    const saved = sessionStorage.getItem('ese_admin_pw');
+    if (saved) { password = saved; await showDashboard(); }
+  })();
+</script>
 </body>
 </html>

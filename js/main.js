@@ -1,22 +1,3 @@
-// Leer configuración del admin (link de inscripción dinámico)
-(async () => {
-  try {
-    const res = await fetch('/.netlify/functions/site-config');
-    if (!res.ok) return;
-    const config = await res.json();
-    if (config.inscriptionUrl) {
-      const btn = document.getElementById('btn-inscripcion');
-      if (btn) {
-        btn.href = config.inscriptionUrl;
-        btn.target = '_blank';
-        btn.rel = 'noopener noreferrer';
-      }
-    }
-  } catch {
-    // En dev local la función no está disponible, se ignora silenciosamente
-  }
-})();
-
 // Menú responsive (hamburguesa)
 const toggle = document.querySelector('.nav__toggle');
 const nav = document.getElementById('nav');
@@ -27,7 +8,6 @@ if (toggle && nav) {
         toggle.setAttribute('aria-expanded', String(!isOpen));
     });
 
-    // Cerrar menú al hacer click en un link
     nav.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
             nav.classList.remove('nav--open');
@@ -35,7 +15,6 @@ if (toggle && nav) {
         });
     });
 }
-
 
 // Año dinámico en el footer
 const y = document.getElementById('year');
@@ -83,17 +62,51 @@ if (toTop) {
     });
 }
 
+// Pestañas (sección Carrera / Historia)
+document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const tab = btn.dataset.tab;
+        document.querySelectorAll('.tab-btn').forEach(b => {
+            b.classList.remove('tab-active');
+            b.setAttribute('aria-selected', 'false');
+        });
+        document.querySelectorAll('.tab-panel').forEach(p => p.classList.add('hidden'));
+        btn.classList.add('tab-active');
+        btn.setAttribute('aria-selected', 'true');
+        document.getElementById('tab-' + tab).classList.remove('hidden');
+    });
+});
+
+// FAQ — acordeón
+document.querySelectorAll('.faq-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const isOpen = item.classList.contains('faq-open');
+        document.querySelectorAll('.faq-item.faq-open').forEach(i => i.classList.remove('faq-open'));
+        if (!isOpen) item.classList.add('faq-open');
+    });
+});
+
 // Carrusel infinito
-(function () {
+function initCarousel() {
     const track = document.getElementById('carouselTrack');
     const dotsWrap = document.getElementById('carouselDots');
     if (!track || !dotsWrap) return;
 
+    // Limpiar clones previos y dots por si se reinicializa
+    dotsWrap.innerHTML = '';
+    Array.from(track.children).forEach(s => { if (s.dataset.clone) s.remove(); });
+
     const origSlides = Array.from(track.children);
     const total = origSlides.length;
+    if (total === 0) return;
 
     // Clonar slides al final para loop infinito hacia adelante
-    origSlides.forEach(s => track.appendChild(s.cloneNode(true)));
+    origSlides.forEach(s => {
+        const clone = s.cloneNode(true);
+        clone.dataset.clone = '1';
+        track.appendChild(clone);
+    });
 
     let current = 0;
     let transitioning = false;
@@ -120,7 +133,7 @@ if (toTop) {
     function setPos(idx, animate) {
         if (!animate) {
             track.style.transition = 'none';
-            track.getBoundingClientRect(); // fuerza reflow para que el cambio sea inmediato
+            track.getBoundingClientRect();
         } else {
             track.style.transition = '';
         }
@@ -129,26 +142,16 @@ if (toTop) {
 
     function goTo(n) {
         if (transitioning) return;
-        // Ir hacia atrás desde el inicio: salto instantáneo al final real
-        if (n < 0) {
-            setPos(total - 1, false);
-            current = total - 1;
-            updateDots();
-            return;
-        }
+        if (n < 0) { setPos(total - 1, false); current = total - 1; updateDots(); return; }
         transitioning = true;
         current = n;
         setPos(current, true);
         updateDots();
     }
 
-    // Cuando termina la animación: si entramos en zona de clones, reset invisible
     track.addEventListener('transitionend', () => {
         transitioning = false;
-        if (current >= total) {
-            current = current - total;
-            setPos(current, false);
-        }
+        if (current >= total) { current = current - total; setPos(current, false); }
     });
 
     function startAuto() { timer = setInterval(() => goTo(current + 1), 4500); }
@@ -171,31 +174,42 @@ if (toTop) {
 
     setPos(0, false);
     startAuto();
+}
+
+// Cargar configuración del admin y luego inicializar el carrusel
+(async () => {
+    let config = {};
+    try {
+        const res = await fetch('/.netlify/functions/site-config');
+        if (res.ok) config = await res.json();
+    } catch {
+        // En dev local la función no está disponible; se usan los valores por defecto
+    }
+
+    // Aplicar link de inscripción externo
+    if (config.inscriptionUrl) {
+        const btn = document.getElementById('btn-inscripcion');
+        if (btn) {
+            btn.href = config.inscriptionUrl;
+            btn.target = '_blank';
+            btn.rel = 'noopener noreferrer';
+        }
+    }
+
+    // Si hay imágenes cargadas desde el admin, reemplazar las del HTML
+    if (config.carouselImages?.length > 0) {
+        const track = document.getElementById('carouselTrack');
+        if (track) {
+            track.innerHTML = config.carouselImages.map(key =>
+                `<div class="carousel__slide">
+                    <img src="/.netlify/functions/carousel-image?key=${encodeURIComponent(key)}"
+                         alt="Galería de la escuela"
+                         class="w-full aspect-[4/3] object-cover"
+                         loading="lazy" />
+                </div>`
+            ).join('');
+        }
+    }
+
+    initCarousel();
 })();
-
-// Pestañas (sección Carrera / Historia)
-document.querySelectorAll('.tab-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-        const tab = btn.dataset.tab;
-        document.querySelectorAll('.tab-btn').forEach(b => {
-            b.classList.remove('tab-active');
-            b.setAttribute('aria-selected', 'false');
-        });
-        document.querySelectorAll('.tab-panel').forEach(p => p.classList.add('hidden'));
-        btn.classList.add('tab-active');
-        btn.setAttribute('aria-selected', 'true');
-        document.getElementById('tab-' + tab).classList.remove('hidden');
-    });
-});
-
-// FAQ — acordeón
-document.querySelectorAll('.faq-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-        const item = btn.closest('.faq-item');
-        const isOpen = item.classList.contains('faq-open');
-        // Cierra todos los otros
-        document.querySelectorAll('.faq-item.faq-open').forEach(i => i.classList.remove('faq-open'));
-        // Abre o cierra el actual
-        if (!isOpen) item.classList.add('faq-open');
-    });
-});
