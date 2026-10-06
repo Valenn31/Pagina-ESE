@@ -101,6 +101,10 @@ function initCarousel() {
     const total = origSlides.length;
     if (total === 0) return;
 
+    // Cuántos slides se ven a la vez (2 en desktop, 1 en mobile)
+    const step = window.innerWidth >= 768 ? 2 : 1;
+    const pageTotal = Math.ceil(total / step);
+
     // Clonar slides al final para loop infinito hacia adelante
     origSlides.forEach(s => {
         const clone = s.cloneNode(true);
@@ -112,22 +116,23 @@ function initCarousel() {
     let transitioning = false;
     let timer;
 
-    origSlides.forEach((_, i) => {
+    // Un dot por "página" (grupo de slides visibles)
+    for (let i = 0; i < pageTotal; i++) {
         const dot = document.createElement('button');
         dot.className = 'carousel__dot' + (i === 0 ? ' active' : '');
-        dot.setAttribute('aria-label', `Ir a imagen ${i + 1}`);
-        dot.addEventListener('click', () => { stopAuto(); goTo(i); startAuto(); });
+        dot.setAttribute('aria-label', `Ir a imágenes ${i * step + 1}–${Math.min((i + 1) * step, total)}`);
+        dot.addEventListener('click', () => { stopAuto(); goTo(i * step); startAuto(); });
         dotsWrap.appendChild(dot);
-    });
+    }
 
-    function stepPx() {
+    function slideW() {
         const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
         return track.children[0].offsetWidth + gap;
     }
 
     function updateDots() {
-        const real = current % total;
-        dotsWrap.querySelectorAll('.carousel__dot').forEach((d, i) => d.classList.toggle('active', i === real));
+        const page = Math.floor((current % total) / step);
+        dotsWrap.querySelectorAll('.carousel__dot').forEach((d, i) => d.classList.toggle('active', i === page));
     }
 
     function setPos(idx, animate) {
@@ -137,12 +142,19 @@ function initCarousel() {
         } else {
             track.style.transition = '';
         }
-        track.style.transform = `translateX(-${idx * stepPx()}px)`;
+        track.style.transform = `translateX(-${idx * slideW()}px)`;
     }
 
     function goTo(n) {
         if (transitioning) return;
-        if (n < 0) { setPos(total - 1, false); current = total - 1; updateDots(); return; }
+        if (n < 0) {
+            // Saltar al inicio de la última página sin animar
+            const lastPage = (pageTotal - 1) * step;
+            setPos(lastPage, false);
+            current = lastPage;
+            updateDots();
+            return;
+        }
         transitioning = true;
         current = n;
         setPos(current, true);
@@ -154,18 +166,18 @@ function initCarousel() {
         if (current >= total) { current = current - total; setPos(current, false); }
     });
 
-    function startAuto() { timer = setInterval(() => goTo(current + 1), 4500); }
+    function startAuto() { timer = setInterval(() => goTo(current + step), 4500); }
     function stopAuto()  { clearInterval(timer); }
 
     const carousel = track.closest('.carousel');
-    carousel.querySelector('.carousel__btn--prev').addEventListener('click', () => { stopAuto(); goTo(current - 1); startAuto(); });
-    carousel.querySelector('.carousel__btn--next').addEventListener('click', () => { stopAuto(); goTo(current + 1); startAuto(); });
+    carousel.querySelector('.carousel__btn--prev').addEventListener('click', () => { stopAuto(); goTo(current - step); startAuto(); });
+    carousel.querySelector('.carousel__btn--next').addEventListener('click', () => { stopAuto(); goTo(current + step); startAuto(); });
 
     let touchStartX = 0;
     carousel.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
     carousel.addEventListener('touchend', e => {
         const diff = touchStartX - e.changedTouches[0].clientX;
-        if (Math.abs(diff) > 40) { stopAuto(); goTo(diff > 0 ? current + 1 : current - 1); startAuto(); }
+        if (Math.abs(diff) > 40) { stopAuto(); goTo(diff > 0 ? current + step : current - step); startAuto(); }
     });
 
     window.addEventListener('resize', () => setPos(current, false), { passive: true });
