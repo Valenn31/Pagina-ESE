@@ -363,6 +363,11 @@
           return;
         }
 
+        if (res.status === 404) {
+          showLoginError('El panel solo funciona en el sitio publicado en Netlify, no en desarrollo local.');
+          return;
+        }
+
         if (!res.ok) throw new Error('Error de servidor');
 
         password = pw;
