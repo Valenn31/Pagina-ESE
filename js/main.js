@@ -64,6 +64,21 @@ if (toTop) {
     });
 }
 
+// Pestañas (sección Carrera / Historia)
+document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const tab = btn.dataset.tab;
+        document.querySelectorAll('.tab-btn').forEach(b => {
+            b.classList.remove('tab-active');
+            b.setAttribute('aria-selected', 'false');
+        });
+        document.querySelectorAll('.tab-panel').forEach(p => p.classList.add('hidden'));
+        btn.classList.add('tab-active');
+        btn.setAttribute('aria-selected', 'true');
+        document.getElementById('tab-' + tab).classList.remove('hidden');
+    });
+});
+
 // FAQ — acordeón
 document.querySelectorAll('.faq-btn').forEach(btn => {
     btn.addEventListener('click', () => {
