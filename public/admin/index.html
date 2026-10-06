@@ -12,7 +12,6 @@
 
     :root {
       --verde: #19a693;
-      --verde-dark: #138578;
       --oscuro: #0f1b2d;
       --claro: #f7f9fc;
       --texto: #1e293b;
@@ -24,11 +23,9 @@
 
     body { font-family: 'Inter', system-ui, sans-serif; background: var(--claro); color: var(--texto); min-height: 100vh; }
 
-    /* LOGIN */
+    /* ---- LOGIN ---- */
     #login-screen { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 1.5rem; }
-
     .login-card { background: white; border-radius: 1.25rem; padding: 2.5rem 2rem; width: 100%; max-width: 380px; box-shadow: 0 8px 32px rgba(0,0,0,.1); }
-
     .login-card .logo { width: 56px; height: 56px; background: var(--verde); border-radius: .875rem; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; }
     .login-card .logo svg { width: 28px; height: 28px; fill: white; }
     .login-card h1 { font-size: 1.25rem; font-weight: 700; color: var(--oscuro); margin-bottom: .25rem; }
@@ -36,7 +33,7 @@
 
     label { display: block; font-size: .8125rem; font-weight: 600; color: var(--texto); margin-bottom: .4rem; }
 
-    input[type="password"], input[type="url"], input[type="text"] {
+    input[type="password"], input[type="url"] {
       width: 100%; border: 1.5px solid var(--borde); border-radius: .625rem;
       padding: .65rem .875rem; font-size: .9375rem; font-family: inherit;
       color: var(--texto); background: var(--claro); outline: none; transition: border-color .15s ease;
@@ -46,20 +43,15 @@
     .btn { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; border: none; border-radius: .625rem; padding: .7rem 1.25rem; font-family: inherit; font-size: .9375rem; font-weight: 600; cursor: pointer; transition: filter .15s ease; }
     .btn-primary { background: var(--verde); color: white; width: 100%; margin-top: 1rem; }
     .btn-primary:hover { filter: brightness(.9); }
-    .btn-primary:disabled { opacity: .6; cursor: not-allowed; filter: none; }
+    .btn-primary:disabled { opacity: .55; cursor: not-allowed; filter: none; }
     .btn-sm { padding: .55rem 1rem; font-size: .875rem; }
-    .btn-outline { background: white; color: var(--texto); border: 1.5px solid var(--borde); }
-    .btn-outline:hover { background: var(--claro); }
-    .btn-danger { background: #fef2f2; color: var(--error); border: 1.5px solid #fecaca; }
-    .btn-danger:hover { background: #fee2e2; }
 
     .msg { font-size: .8125rem; margin-top: .75rem; min-height: 1.1em; display: flex; align-items: center; gap: .4rem; }
     .msg.error { color: var(--error); }
     .msg.success { color: var(--success); }
 
-    /* DASHBOARD */
+    /* ---- DASHBOARD ---- */
     #dashboard { display: none; min-height: 100vh; }
-
     .topbar { background: var(--oscuro); color: white; padding: 1rem 1.5rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
     .topbar h1 { font-size: 1rem; font-weight: 700; }
     .topbar span { font-size: .8125rem; color: rgba(255,255,255,.5); }
@@ -69,7 +61,6 @@
     .main-content { max-width: 700px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
 
     .card { background: white; border-radius: 1rem; padding: 1.75rem; box-shadow: 0 2px 12px rgba(0,0,0,.06); margin-bottom: 1.5rem; }
-
     .card-header { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.25rem; }
     .card-icon { width: 44px; height: 44px; border-radius: .75rem; background: rgba(25,166,147,.12); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
     .card-icon svg { width: 22px; height: 22px; stroke: var(--verde); fill: none; stroke-width: 2; }
@@ -79,57 +70,106 @@
     .field-row { display: flex; gap: .75rem; align-items: flex-end; }
     .field-row > div { flex: 1; }
 
-    /* Contador */
+    /* ---- CONTADOR ---- */
     .count-bar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
     .count-text { font-size: .8125rem; color: var(--gris); }
     .count-text strong { color: var(--texto); }
-    .count-full { color: var(--error); }
+    .count-full { color: var(--error) !important; }
 
-    /* Grid de imágenes */
+    /* ---- GRID DE IMÁGENES ---- */
     .img-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: .75rem; margin-bottom: 1.25rem; }
 
-    .img-card { position: relative; border-radius: .75rem; overflow: hidden; aspect-ratio: 4/3; background: var(--claro); border: 1.5px solid var(--borde); }
-    .img-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .img-card .delete-btn {
+    .img-card {
+      position: relative; border-radius: .75rem; overflow: hidden;
+      aspect-ratio: 4/3; background: var(--claro);
+      border: 1.5px solid var(--borde);
+      transition: box-shadow .15s ease, transform .15s ease, opacity .15s ease;
+    }
+    .img-card img { width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none; }
+
+    /* Drag states */
+    .img-card[draggable="true"] { cursor: grab; }
+    .img-card.dragging { opacity: .35; border-style: dashed; }
+    .img-card.drag-over { border-color: var(--verde); box-shadow: 0 0 0 2.5px var(--verde); transform: scale(1.03); }
+
+    /* Drag handle */
+    .drag-handle {
+      position: absolute; top: .4rem; left: .4rem;
+      background: rgba(0,0,0,.52); color: white; border-radius: .3rem;
+      padding: .18rem .28rem; font-size: 1rem; line-height: 1;
+      cursor: grab; user-select: none;
+      opacity: 0; transition: opacity .15s ease;
+      pointer-events: none; /* Se activa en hover del card */
+    }
+    .img-card:hover .drag-handle { opacity: 1; pointer-events: auto; }
+
+    /* Delete */
+    .delete-btn {
       position: absolute; top: .4rem; right: .4rem;
-      background: rgba(239,68,68,.9); color: white; border: none;
+      background: rgba(239,68,68,.88); color: white; border: none;
       border-radius: .4rem; width: 28px; height: 28px; cursor: pointer;
       display: flex; align-items: center; justify-content: center;
       opacity: 0; transition: opacity .15s ease;
       font-size: .875rem; font-weight: 700; line-height: 1;
     }
     .img-card:hover .delete-btn { opacity: 1; }
-    .img-card .img-num { position: absolute; bottom: .4rem; left: .4rem; background: rgba(0,0,0,.55); color: white; font-size: .7rem; font-weight: 600; border-radius: .3rem; padding: .1rem .35rem; }
+
+    /* Número */
+    .img-num {
+      position: absolute; bottom: .4rem; left: .4rem;
+      background: rgba(0,0,0,.55); color: white; font-size: .7rem;
+      font-weight: 600; border-radius: .3rem; padding: .1rem .35rem;
+      pointer-events: none;
+    }
+
+    /* Botones mover ← → */
+    .move-btns { position: absolute; bottom: .4rem; right: .4rem; display: flex; gap: .25rem; }
+    .move-btn {
+      background: rgba(0,0,0,.55); color: white; border: none;
+      border-radius: .3rem; width: 26px; height: 26px; cursor: pointer;
+      font-size: .8125rem; display: flex; align-items: center; justify-content: center;
+      transition: background .15s ease;
+    }
+    .move-btn:hover { background: var(--verde); }
+    @media (min-width: 640px) {
+      .move-btns { opacity: 0; transition: opacity .15s ease; }
+      .img-card:hover .move-btns { opacity: 1; }
+    }
 
     /* Estado vacío */
     .empty-state { text-align: center; padding: 2rem 1rem; color: var(--gris); font-size: .875rem; border: 1.5px dashed var(--borde); border-radius: .75rem; margin-bottom: 1.25rem; }
     .empty-state svg { width: 40px; height: 40px; stroke: var(--borde); fill: none; stroke-width: 1.5; margin-bottom: .75rem; }
 
-    /* Upload area */
-    .upload-area { position: relative; }
+    /* Upload */
+    .upload-area { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; }
     .upload-btn-label {
       display: inline-flex; align-items: center; gap: .5rem;
       background: var(--verde); color: white; border-radius: .625rem;
       padding: .65rem 1.25rem; font-size: .9375rem; font-weight: 600;
-      cursor: pointer; transition: filter .15s ease;
+      cursor: pointer; transition: filter .15s ease; white-space: nowrap;
     }
     .upload-btn-label:hover { filter: brightness(.9); }
     .upload-btn-label.disabled { opacity: .5; pointer-events: none; }
     #file-input { position: absolute; opacity: 0; width: 0; height: 0; }
+    .upload-hint { font-size: .8125rem; color: var(--gris); }
 
     /* Progress */
-    .upload-progress { margin-top: .75rem; }
-    .progress-bar-wrap { background: var(--borde); border-radius: 999px; height: 6px; overflow: hidden; margin-top: .4rem; }
+    .upload-progress-wrap { width: 100%; margin-top: .5rem; }
+    .progress-bar-bg { background: var(--borde); border-radius: 999px; height: 6px; overflow: hidden; margin-top: .35rem; }
     .progress-bar { height: 100%; background: var(--verde); border-radius: 999px; transition: width .2s ease; }
 
-    /* Loader */
-    .loader { display: inline-block; width: 16px; height: 16px; border: 2px solid rgba(255,255,255,.4); border-top-color: white; border-radius: 50%; animation: spin .6s linear infinite; vertical-align: middle; }
-    .loader-dark { border-color: rgba(0,0,0,.15); border-top-color: var(--verde); }
-    @keyframes spin { to { transform: rotate(360deg); } }
-
+    /* Badges */
     .badge { display: inline-block; border-radius: 999px; font-size: .75rem; font-weight: 600; padding: .15rem .65rem; margin-left: .4rem; }
     .badge-green { background: rgba(25,166,147,.12); color: var(--verde); }
     .badge-gray { background: rgba(148,163,184,.12); color: var(--gris); }
+
+    /* Loader */
+    .loader { display: inline-block; width: 16px; height: 16px; border: 2px solid rgba(255,255,255,.4); border-top-color: white; border-radius: 50%; animation: spin .6s linear infinite; vertical-align: middle; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Reorder hint */
+    .reorder-hint { font-size: .75rem; color: var(--gris); margin-bottom: .75rem; display: flex; align-items: center; gap: .35rem; }
+    .reorder-hint svg { width: 14px; height: 14px; stroke: var(--gris); fill: none; stroke-width: 2; flex-shrink: 0; }
   </style>
 </head>
 <body>
@@ -173,12 +213,10 @@
         </div>
         <div>
           <div class="card-title">Link de inscripción</div>
-          <div class="card-desc">Es el link que se abre cuando un visitante hace clic en <strong>"Consultar inscripción"</strong>. La provincia lo cambia cada año. Pegá acá el nuevo link.</div>
+          <div class="card-desc">Es el link del botón <strong>"Consultar inscripción"</strong>. La provincia lo cambia cada año. Pegá acá el nuevo link.</div>
         </div>
       </div>
-
       <div id="link-loading" style="color:var(--gris);font-size:.875rem;">Cargando…</div>
-
       <div id="link-section" style="display:none;">
         <div style="margin-bottom:1rem;">
           <div style="font-size:.8125rem;color:var(--gris);margin-bottom:.35rem;">Link actual:</div>
@@ -187,9 +225,7 @@
         <form id="link-form" novalidate>
           <label for="inscription-url">Nuevo link</label>
           <div class="field-row">
-            <div>
-              <input type="url" id="inscription-url" placeholder="https://inscripciones.santafe.gob.ar/..." />
-            </div>
+            <div><input type="url" id="inscription-url" placeholder="https://inscripciones.santafe.gob.ar/…" /></div>
             <button class="btn btn-primary btn-sm" type="submit" id="link-btn" style="white-space:nowrap;width:auto;margin-top:0;">Guardar</button>
           </div>
           <p class="msg" id="link-msg" aria-live="polite"></p>
@@ -205,7 +241,7 @@
         </div>
         <div>
           <div class="card-title">Imágenes del carrusel</div>
-          <div class="card-desc">Subí las fotos que quieras mostrar en la galería de la página principal. Máximo <strong>10 imágenes</strong> (JPG, PNG o WebP, hasta 5 MB cada una). Para cambiar el orden, borrá y volvé a subir.</div>
+          <div class="card-desc">Fotos que aparecen en la galería de la página principal. Máximo <strong>10 imágenes</strong> (JPG, PNG o WebP, hasta 5 MB c/u). Podés subir varias a la vez.</div>
         </div>
       </div>
 
@@ -216,7 +252,13 @@
           <span class="count-text" id="img-count-text">0 / 10 imágenes</span>
         </div>
 
+        <div id="reorder-hint" class="reorder-hint" style="display:none;">
+          <svg viewBox="0 0 24 24"><path d="M3 9l4-4 4 4"/><path d="M7 5v14"/><path d="M21 15l-4 4-4-4"/><path d="M17 19V5"/></svg>
+          Arrastrá las imágenes para cambiar el orden, o usá los botones ← →
+        </div>
+
         <div id="img-grid" class="img-grid"></div>
+
         <div id="img-empty" class="empty-state" style="display:none;">
           <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
           <div>Todavía no hay imágenes en el carrusel.</div>
@@ -225,17 +267,22 @@
 
         <div class="upload-area">
           <label class="upload-btn-label" id="upload-label" for="file-input">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-            Subir imagen
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="17 8 12 3 7 8"/>
+              <line x1="12" y1="3" x2="12" y2="15"/>
+            </svg>
+            Subir imágenes
           </label>
-          <input type="file" id="file-input" accept="image/jpeg,image/png,image/webp,image/gif" />
-
-          <div id="upload-progress" class="upload-progress" style="display:none;">
-            <div style="font-size:.8125rem;color:var(--gris);" id="upload-status-text">Subiendo…</div>
-            <div class="progress-bar-wrap"><div class="progress-bar" id="progress-bar" style="width:0%"></div></div>
-          </div>
-          <p class="msg" id="upload-msg" aria-live="polite"></p>
+          <span class="upload-hint">Podés seleccionar varias a la vez</span>
+          <input type="file" id="file-input" accept="image/jpeg,image/png,image/webp" multiple />
         </div>
+
+        <div id="upload-progress" class="upload-progress-wrap" style="display:none;">
+          <div style="font-size:.8125rem;color:var(--gris);" id="upload-status-text"></div>
+          <div class="progress-bar-bg"><div class="progress-bar" id="progress-bar" style="width:0%"></div></div>
+        </div>
+        <p class="msg" id="upload-msg" aria-live="polite"></p>
       </div>
     </div>
 
@@ -246,9 +293,10 @@
   const API_CONFIG = '/.netlify/functions/site-config';
   const API_IMG    = '/.netlify/functions/carousel-image';
   let password = '';
-  let config = { inscriptionUrl: '', carouselImages: [] };
+  let config   = { inscriptionUrl: '', carouselImages: [] };
+  let dragSrcIdx = null;
 
-  /* ========== LOGIN ========== */
+  /* ===== LOGIN ===== */
   const loginScreen = document.getElementById('login-screen');
   const dashboard   = document.getElementById('dashboard');
   const loginBtn    = document.getElementById('login-btn');
@@ -258,22 +306,18 @@
     e.preventDefault();
     const pw = document.getElementById('password').value.trim();
     if (!pw) return;
-
     loginBtn.disabled = true;
     loginBtn.innerHTML = '<span class="loader"></span>';
     loginError.style.display = 'none';
-
     try {
       const res = await fetch(API_CONFIG, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'x-admin-password': pw },
         body: JSON.stringify(config),
       });
-
       if (res.status === 401) { showLoginError('Contraseña incorrecta. Intentá de nuevo.'); return; }
-      if (res.status === 404) { showLoginError('El panel solo funciona en el sitio publicado en Netlify, no en desarrollo local.'); return; }
+      if (res.status === 404) { showLoginError('El panel solo funciona en el sitio publicado en Netlify.'); return; }
       if (!res.ok) throw new Error('Error de servidor');
-
       password = pw;
       sessionStorage.setItem('ese_admin_pw', pw);
       await showDashboard();
@@ -287,10 +331,7 @@
     }
   });
 
-  function showLoginError(msg) {
-    loginError.textContent = msg;
-    loginError.style.display = 'flex';
-  }
+  function showLoginError(msg) { loginError.textContent = msg; loginError.style.display = 'flex'; }
 
   document.getElementById('logout-btn').addEventListener('click', () => {
     sessionStorage.removeItem('ese_admin_pw');
@@ -300,7 +341,7 @@
     document.getElementById('password').value = '';
   });
 
-  /* ========== DASHBOARD ========== */
+  /* ===== DASHBOARD ===== */
   async function showDashboard() {
     loginScreen.style.display = 'none';
     dashboard.style.display = 'block';
@@ -310,7 +351,7 @@
   async function loadConfig() {
     try {
       const res = await fetch(API_CONFIG);
-      if (!res.ok) throw new Error('Error al cargar config');
+      if (!res.ok) throw new Error();
       config = await res.json();
     } catch {
       config = { inscriptionUrl: '', carouselImages: [] };
@@ -319,11 +360,20 @@
     renderCarouselSection();
   }
 
-  /* ========== LINK DE INSCRIPCIÓN ========== */
+  /* ===== GUARDAR CONFIG COMPLETA ===== */
+  async function saveConfig() {
+    const res = await fetch(API_CONFIG, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'x-admin-password': password },
+      body: JSON.stringify(config),
+    });
+    if (!res.ok) { const d = await res.json().catch(() => ({})); throw new Error(d.error || 'Error al guardar'); }
+  }
+
+  /* ===== LINK DE INSCRIPCIÓN ===== */
   function renderLinkSection() {
     document.getElementById('link-loading').style.display = 'none';
     document.getElementById('link-section').style.display = 'block';
-
     const display = document.getElementById('current-link-display');
     if (config.inscriptionUrl) {
       display.innerHTML = `<a href="${esc(config.inscriptionUrl)}" target="_blank" rel="noopener">${esc(config.inscriptionUrl)}</a> <span class="badge badge-green">Activo</span>`;
@@ -338,22 +388,13 @@
     const url = document.getElementById('inscription-url').value.trim();
     const btn = document.getElementById('link-btn');
     const msg = document.getElementById('link-msg');
-
     if (url && !url.startsWith('http')) { setMsg(msg, 'error', 'El link debe comenzar con https://'); return; }
-
     btn.disabled = true;
     btn.innerHTML = '<span class="loader"></span>';
     setMsg(msg, '', '');
-
     try {
-      const newConfig = { ...config, inscriptionUrl: url };
-      const res = await fetch(API_CONFIG, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'x-admin-password': password },
-        body: JSON.stringify(newConfig),
-      });
-      if (!res.ok) { const d = await res.json().catch(() => ({})); throw new Error(d.error || 'Error al guardar'); }
-      config = newConfig;
+      config.inscriptionUrl = url;
+      await saveConfig();
       renderLinkSection();
       setMsg(msg, 'success', '✓ Link guardado correctamente');
       setTimeout(() => setMsg(msg, '', ''), 4000);
@@ -365,49 +406,115 @@
     }
   });
 
-  /* ========== CARRUSEL ========== */
+  /* ===== CARRUSEL ===== */
   function renderCarouselSection() {
     document.getElementById('carousel-loading').style.display = 'none';
     document.getElementById('carousel-section').style.display = 'block';
 
-    const images = config.carouselImages || [];
-    const grid   = document.getElementById('img-grid');
-    const empty  = document.getElementById('img-empty');
-    const countEl = document.getElementById('img-count-text');
-    const uploadLabel = document.getElementById('upload-label');
+    const images    = config.carouselImages || [];
+    const grid      = document.getElementById('img-grid');
+    const empty     = document.getElementById('img-empty');
+    const countEl   = document.getElementById('img-count-text');
+    const hint      = document.getElementById('reorder-hint');
+    const uploadLbl = document.getElementById('upload-label');
 
     countEl.textContent = `${images.length} / 10 imágenes`;
-    countEl.className = 'count-text' + (images.length >= 10 ? ' count-full' : '');
-
-    if (images.length >= 10) {
-      uploadLabel.classList.add('disabled');
-    } else {
-      uploadLabel.classList.remove('disabled');
-    }
+    countEl.className   = 'count-text' + (images.length >= 10 ? ' count-full' : '');
+    uploadLbl.classList.toggle('disabled', images.length >= 10);
+    hint.style.display = images.length > 1 ? 'flex' : 'none';
 
     grid.innerHTML = '';
 
     if (images.length === 0) {
       empty.style.display = 'block';
-    } else {
-      empty.style.display = 'none';
-      images.forEach((key, idx) => {
-        const card = document.createElement('div');
-        card.className = 'img-card';
-        card.innerHTML = `
-          <img src="${API_IMG}?key=${encodeURIComponent(key)}" alt="Imagen ${idx + 1}" loading="lazy" />
-          <button class="delete-btn" title="Borrar imagen" data-key="${esc(key)}">✕</button>
-          <span class="img-num">${idx + 1}</span>
-        `;
-        card.querySelector('.delete-btn').addEventListener('click', () => deleteImage(key));
-        grid.appendChild(card);
+      return;
+    }
+    empty.style.display = 'none';
+
+    images.forEach((key, idx) => {
+      const card = document.createElement('div');
+      card.className  = 'img-card';
+      card.draggable  = true;
+      card.dataset.idx = idx;
+
+      card.innerHTML = `
+        <img src="${API_IMG}?key=${encodeURIComponent(key)}" alt="Imagen ${idx + 1}" loading="lazy" />
+        <div class="drag-handle" title="Arrastrar para reordenar">⠿</div>
+        <button class="delete-btn" title="Borrar imagen">✕</button>
+        <div class="img-num">${idx + 1}</div>
+        <div class="move-btns">
+          ${idx > 0                  ? `<button class="move-btn" data-dir="-1" title="Mover hacia atrás">←</button>`  : ''}
+          ${idx < images.length - 1 ? `<button class="move-btn" data-dir="1"  title="Mover hacia adelante">→</button>` : ''}
+        </div>
+      `;
+
+      card.querySelector('.delete-btn').addEventListener('click', () => deleteImage(key));
+
+      card.querySelectorAll('.move-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const dir = parseInt(btn.dataset.dir);
+          moveImage(idx, idx + dir);
+        });
       });
+
+      // ---- Drag & Drop ----
+      card.addEventListener('dragstart', (e) => {
+        dragSrcIdx = idx;
+        e.dataTransfer.effectAllowed = 'move';
+        setTimeout(() => card.classList.add('dragging'), 0);
+      });
+
+      card.addEventListener('dragend', () => {
+        card.classList.remove('dragging');
+        grid.querySelectorAll('.img-card').forEach(c => c.classList.remove('drag-over'));
+        dragSrcIdx = null;
+      });
+
+      card.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        e.dataTransfer.dropEffect = 'move';
+        if (dragSrcIdx !== null && dragSrcIdx !== idx) card.classList.add('drag-over');
+      });
+
+      card.addEventListener('dragleave', () => card.classList.remove('drag-over'));
+
+      card.addEventListener('drop', (e) => {
+        e.preventDefault();
+        card.classList.remove('drag-over');
+        if (dragSrcIdx === null || dragSrcIdx === idx) return;
+        moveImage(dragSrcIdx, idx);
+      });
+
+      grid.appendChild(card);
+    });
+  }
+
+  async function moveImage(fromIdx, toIdx) {
+    if (toIdx < 0 || toIdx >= config.carouselImages.length) return;
+    const prev = [...config.carouselImages];
+
+    // Optimistic update
+    const next = [...config.carouselImages];
+    const [item] = next.splice(fromIdx, 1);
+    next.splice(toIdx, 0, item);
+    config.carouselImages = next;
+    renderCarouselSection();
+
+    try {
+      await saveConfig();
+      const msg = document.getElementById('upload-msg');
+      setMsg(msg, 'success', '✓ Orden guardado');
+      setTimeout(() => setMsg(msg, '', ''), 2000);
+    } catch {
+      config.carouselImages = prev; // revertir
+      renderCarouselSection();
+      setMsg(document.getElementById('upload-msg'), 'error', 'Error al guardar el orden');
     }
   }
 
   async function deleteImage(key) {
     if (!confirm('¿Borrar esta imagen del carrusel?')) return;
-
     try {
       const res = await fetch(`${API_IMG}?key=${encodeURIComponent(key)}`, {
         method: 'DELETE',
@@ -421,82 +528,91 @@
     }
   }
 
-  /* ========== SUBIR IMAGEN ========== */
+  /* ===== SUBIR IMÁGENES (múltiples) ===== */
   document.getElementById('file-input').addEventListener('change', async (e) => {
-    const file = e.target.files[0];
+    const files = Array.from(e.target.files);
     e.target.value = '';
-    if (!file) return;
+    if (!files.length) return;
 
-    const msg = document.getElementById('upload-msg');
-    const progress = document.getElementById('upload-progress');
-    const progressBar = document.getElementById('progress-bar');
-    const statusText = document.getElementById('upload-status-text');
-    const uploadLabel = document.getElementById('upload-label');
+    const uploadMsg    = document.getElementById('upload-msg');
+    const progressWrap = document.getElementById('upload-progress');
+    const progressBar  = document.getElementById('progress-bar');
+    const statusText   = document.getElementById('upload-status-text');
+    const uploadLbl    = document.getElementById('upload-label');
 
-    // Validación client-side
-    if (!file.type.startsWith('image/')) { setMsg(msg, 'error', 'Solo se permiten archivos de imagen'); return; }
-    if (file.size > 5 * 1024 * 1024) { setMsg(msg, 'error', 'La imagen no puede superar 5 MB'); return; }
-    if ((config.carouselImages?.length ?? 0) >= 10) { setMsg(msg, 'error', 'Límite de 10 imágenes alcanzado'); return; }
+    const currentCount = config.carouselImages?.length ?? 0;
+    const remaining    = 10 - currentCount;
 
-    setMsg(msg, '', '');
-    uploadLabel.classList.add('disabled');
-    progress.style.display = 'block';
-    statusText.textContent = `Subiendo ${file.name}…`;
+    if (remaining <= 0) { setMsg(uploadMsg, 'error', 'Límite de 10 imágenes alcanzado. Borrá alguna antes.'); return; }
 
-    // Simulamos progreso mientras sube (XHR para progreso real)
-    let pct = 0;
-    const ticker = setInterval(() => {
-      pct = Math.min(pct + 8, 85);
-      progressBar.style.width = pct + '%';
-    }, 150);
+    const toUpload = files.slice(0, remaining);
+    setMsg(uploadMsg, '', '');
 
-    try {
-      const res = await fetch(API_IMG, {
-        method: 'POST',
-        headers: {
-          'Content-Type': file.type,
-          'x-admin-password': password,
-          'x-filename': file.name,
-        },
-        body: file,
-      });
-
-      clearInterval(ticker);
-      progressBar.style.width = '100%';
-
-      if (!res.ok) {
-        const d = await res.json().catch(() => ({}));
-        throw new Error(d.error || 'Error al subir');
-      }
-
-      const { key } = await res.json();
-      config.carouselImages = [...(config.carouselImages || []), key];
-
-      statusText.textContent = '¡Subida correctamente!';
-      setTimeout(() => { progress.style.display = 'none'; progressBar.style.width = '0%'; }, 1500);
-
-      setMsg(msg, 'success', '✓ Imagen agregada al carrusel');
-      setTimeout(() => setMsg(msg, '', ''), 4000);
-
-      renderCarouselSection();
-    } catch (err) {
-      clearInterval(ticker);
-      progress.style.display = 'none';
-      progressBar.style.width = '0%';
-      setMsg(msg, 'error', err.message);
-      uploadLabel.classList.remove('disabled');
+    if (files.length > remaining) {
+      setMsg(uploadMsg, 'error', `Solo quedan ${remaining} lugar(es). Se subirán las primeras ${remaining} imágenes seleccionadas.`);
     }
+
+    // Validación rápida client-side
+    const valid = toUpload.filter(f => {
+      if (!f.type.startsWith('image/')) return false;
+      if (f.size > 5 * 1024 * 1024) return false;
+      return true;
+    });
+
+    const invalidCount = toUpload.length - valid.length;
+    if (valid.length === 0) { setMsg(uploadMsg, 'error', 'Ningún archivo válido. Usá JPG, PNG o WebP de hasta 5 MB.'); return; }
+
+    uploadLbl.classList.add('disabled');
+    progressWrap.style.display = 'block';
+
+    let successCount = 0;
+    let errorCount   = invalidCount;
+
+    for (let i = 0; i < valid.length; i++) {
+      const file = valid[i];
+      statusText.textContent = `Subiendo ${i + 1} de ${valid.length}: ${file.name}`;
+      progressBar.style.width = `${(i / valid.length) * 100}%`;
+
+      try {
+        const res = await fetch(API_IMG, {
+          method: 'POST',
+          headers: {
+            'Content-Type': file.type,
+            'x-admin-password': password,
+            'x-filename': file.name,
+          },
+          body: file,
+        });
+        if (!res.ok) { const d = await res.json().catch(() => ({})); throw new Error(d.error); }
+        const { key } = await res.json();
+        config.carouselImages = [...(config.carouselImages || []), key];
+        successCount++;
+        renderCarouselSection(); // actualiza el grid en tiempo real
+      } catch {
+        errorCount++;
+      }
+    }
+
+    progressBar.style.width = '100%';
+    statusText.textContent = successCount > 0
+      ? `¡Listo! ${successCount} imagen(es) subida(s)${errorCount ? `, ${errorCount} con error` : ''}.`
+      : `${errorCount} archivo(s) no se pudieron subir.`;
+    setTimeout(() => { progressWrap.style.display = 'none'; progressBar.style.width = '0%'; }, 2000);
+
+    if (successCount > 0 && !document.querySelector('#upload-msg.error')) {
+      setMsg(uploadMsg, 'success', `✓ ${successCount} imagen(es) agregada(s) al carrusel`);
+      setTimeout(() => setMsg(uploadMsg, '', ''), 5000);
+    }
+    if (errorCount > 0 && successCount === 0) {
+      setMsg(uploadMsg, 'error', `Los archivos no se pudieron subir (verificá tamaño y formato)`);
+    }
+
+    uploadLbl.classList.toggle('disabled', (config.carouselImages?.length ?? 0) >= 10);
   });
 
-  /* ========== UTILS ========== */
-  function setMsg(el, type, text) {
-    el.textContent = text;
-    el.className = 'msg ' + type;
-  }
-
-  function esc(str) {
-    return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-  }
+  /* ===== UTILS ===== */
+  function setMsg(el, type, text) { el.textContent = text; el.className = 'msg ' + type; }
+  function esc(str) { return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 
   // Auto-login si hay sesión guardada
   (async () => {
