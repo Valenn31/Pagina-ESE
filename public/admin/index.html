@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Administración — ESE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --verde: #19a693;
+      --verde-dark: #138578;
+      --oscuro: #0f1b2d;
+      --claro: #f7f9fc;
+      --texto: #1e293b;
+      --gris: #94a3b8;
+      --borde: #e2e8f0;
+      --error: #ef4444;
+      --success: #22c55e;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--claro);
+      color: var(--texto);
+      min-height: 100vh;
+    }
+
+    /* ---- LOGIN ---- */
+    #login-screen {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+
+    .login-card {
+      background: white;
+      border-radius: 1.25rem;
+      padding: 2.5rem 2rem;
+      width: 100%;
+      max-width: 380px;
+      box-shadow: 0 8px 32px rgba(0,0,0,.1);
+    }
+
+    .login-card .logo {
+      width: 56px;
+      height: 56px;
+      background: var(--verde);
+      border-radius: .875rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .login-card .logo svg { width: 28px; height: 28px; fill: white; }
+
+    .login-card h1 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--oscuro);
+      margin-bottom: .25rem;
+    }
+
+    .login-card p {
+      font-size: .875rem;
+      color: var(--gris);
+      margin-bottom: 1.75rem;
+    }
+
+    label {
+      display: block;
+      font-size: .8125rem;
+      font-weight: 600;
+      color: var(--texto);
+      margin-bottom: .4rem;
+    }
+
+    input[type="password"],
+    input[type="url"],
+    input[type="text"] {
+      width: 100%;
+      border: 1.5px solid var(--borde);
+      border-radius: .625rem;
+      padding: .65rem .875rem;
+      font-size: .9375rem;
+      font-family: inherit;
+      color: var(--texto);
+      background: var(--claro);
+      outline: none;
+      transition: border-color .15s ease;
+    }
+
+    input:focus { border-color: var(--verde); background: white; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      border: none;
+      border-radius: .625rem;
+      padding: .7rem 1.25rem;
+      font-family: inherit;
+      font-size: .9375rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: filter .15s ease;
+    }
+
+    .btn-primary {
+      background: var(--verde);
+      color: white;
+      width: 100%;
+      margin-top: 1rem;
+    }
+
+    .btn-primary:hover { filter: brightness(.9); }
+    .btn-primary:disabled { opacity: .6; cursor: not-allowed; filter: none; }
+
+    .btn-sm {
+      padding: .55rem 1rem;
+      font-size: .875rem;
+    }
+
+    .btn-outline {
+      background: white;
+      color: var(--texto);
+      border: 1.5px solid var(--borde);
+    }
+
+    .btn-outline:hover { background: var(--claro); }
+
+    .msg {
+      font-size: .8125rem;
+      margin-top: .75rem;
+      min-height: 1.1em;
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+    }
+
+    .msg.error { color: var(--error); }
+    .msg.success { color: var(--success); }
+
+    /* ---- DASHBOARD ---- */
+    #dashboard { display: none; min-height: 100vh; }
+
+    .topbar {
+      background: var(--oscuro);
+      color: white;
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .topbar h1 { font-size: 1rem; font-weight: 700; }
+    .topbar span { font-size: .8125rem; color: rgba(255,255,255,.5); }
+
+    .topbar-right { display: flex; align-items: center; gap: .75rem; }
+
+    .btn-logout {
+      background: rgba(255,255,255,.1);
+      color: white;
+      border: none;
+      border-radius: .5rem;
+      padding: .4rem .85rem;
+      font-size: .8125rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background .15s ease;
+    }
+
+    .btn-logout:hover { background: rgba(255,255,255,.18); }
+
+    .main-content {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 1rem;
+      padding: 1.75rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,.06);
+      margin-bottom: 1.5rem;
+    }
+
+    .card-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .card-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: .75rem;
+      background: rgba(25,166,147,.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      shrink: 0;
+    }
+
+    .card-icon svg { width: 22px; height: 22px; stroke: var(--verde); fill: none; stroke-width: 2; }
+
+    .card-title { font-size: 1rem; font-weight: 700; color: var(--oscuro); margin-bottom: .2rem; }
+    .card-desc { font-size: .8125rem; color: var(--gris); line-height: 1.5; }
+
+    .field-row { display: flex; gap: .75rem; align-items: flex-end; }
+    .field-row > div { flex: 1; }
+
+    .current-value {
+      font-size: .8125rem;
+      color: var(--gris);
+      margin-top: .5rem;
+      word-break: break-all;
+    }
+
+    .current-value a { color: var(--verde); text-decoration: underline; }
+
+    .badge {
+      display: inline-block;
+      background: rgba(25,166,147,.12);
+      color: var(--verde);
+      border-radius: 999px;
+      font-size: .75rem;
+      font-weight: 600;
+      padding: .15rem .65rem;
+      margin-left: .4rem;
+    }
+
+    .badge.none { background: rgba(148,163,184,.12); color: var(--gris); }
+
+    .loader {
+      display: inline-block;
+      width: 16px; height: 16px;
+      border: 2px solid rgba(255,255,255,.4);
+      border-top-color: white;
+      border-radius: 50%;
+      animation: spin .6s linear infinite;
+      vertical-align: middle;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body>
+
+  <!-- ===================== LOGIN ===================== -->
+  <div id="login-screen">
+    <div class="login-card">
+      <div class="logo">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2a5 5 0 1 1 0 10A5 5 0 0 1 12 2zm0 12c-5.33 0-8 2.67-8 4v2h16v-2c0-1.33-2.67-4-8-4z"/>
+        </svg>
+      </div>
+      <h1>Panel de administración</h1>
+      <p>Escuela Superior de Enfermería · Cañada de Gómez</p>
+      <form id="login-form" autocomplete="off" novalidate>
+        <label for="password">Contraseña</label>
+        <input type="password" id="password" placeholder="Ingresá la contraseña" autocomplete="current-password" required />
+        <button class="btn btn-primary" type="submit" id="login-btn">Ingresar</button>
+        <p class="msg error" id="login-error" aria-live="polite" style="display:none;"></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- ===================== DASHBOARD ===================== -->
+  <div id="dashboard">
+    <header class="topbar">
+      <div>
+        <h1>Panel de administración</h1>
+        <span>Escuela Superior de Enfermería</span>
+      </div>
+      <div class="topbar-right">
+        <button class="btn-logout" id="logout-btn">Cerrar sesión</button>
+      </div>
+    </header>
+
+    <main class="main-content">
+
+      <!-- INSCRIPCIÓN -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+          </div>
+          <div>
+            <div class="card-title">Link de inscripción</div>
+            <div class="card-desc">Es el link que se abre cuando un visitante hace clic en el botón <strong>"Consultar inscripción"</strong>. La provincia lo cambia cada año. Pegá acá el nuevo link.</div>
+          </div>
+        </div>
+
+        <div id="link-loading" style="color:var(--gris);font-size:.875rem;">Cargando…</div>
+
+        <div id="link-section" style="display:none;">
+          <div style="margin-bottom:1rem;">
+            <div style="font-size:.8125rem;color:var(--gris);margin-bottom:.35rem;">Link actual:</div>
+            <div id="current-link-display" style="font-size:.875rem;word-break:break-all;"></div>
+          </div>
+
+          <form id="link-form" novalidate>
+            <label for="inscription-url">Nuevo link</label>
+            <div class="field-row">
+              <div>
+                <input type="url" id="inscription-url" placeholder="https://inscripciones.santafe.gob.ar/..." />
+              </div>
+              <button class="btn btn-primary btn-sm" type="submit" id="link-btn" style="white-space:nowrap;width:auto;margin-top:0;">
+                Guardar
+              </button>
+            </div>
+            <p class="msg" id="link-msg" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <script>
+    const API = '/.netlify/functions/site-config';
+    let password = '';
+    let config = { inscriptionUrl: '', carouselImages: [] };
+
+    // ---- LOGIN ----
+    const loginScreen = document.getElementById('login-screen');
+    const dashboard   = document.getElementById('dashboard');
+    const loginForm   = document.getElementById('login-form');
+    const loginBtn    = document.getElementById('login-btn');
+    const loginError  = document.getElementById('login-error');
+    const logoutBtn   = document.getElementById('logout-btn');
+
+    loginForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const pw = document.getElementById('password').value.trim();
+      if (!pw) return;
+
+      loginBtn.disabled = true;
+      loginBtn.innerHTML = '<span class="loader"></span>';
+      loginError.style.display = 'none';
+
+      try {
+        const res = await fetch(API, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'x-admin-password': pw },
+          body: JSON.stringify(config),
+        });
+
+        if (res.status === 401) {
+          showLoginError('Contraseña incorrecta. Intentá de nuevo.');
+          return;
+        }
+
+        if (!res.ok) throw new Error('Error de servidor');
+
+        password = pw;
+        sessionStorage.setItem('ese_admin_pw', pw);
+        await showDashboard();
+      } catch (err) {
+        if (err.message === 'Failed to fetch') {
+          showLoginError('No se pudo conectar. El panel solo funciona en el sitio publicado (Netlify).');
+        } else {
+          showLoginError('Error: ' + err.message);
+        }
+      } finally {
+        loginBtn.disabled = false;
+        loginBtn.textContent = 'Ingresar';
+      }
+    });
+
+    function showLoginError(msg) {
+      loginError.textContent = msg;
+      loginError.style.display = 'flex';
+    }
+
+    logoutBtn.addEventListener('click', () => {
+      sessionStorage.removeItem('ese_admin_pw');
+      password = '';
+      loginScreen.style.display = 'flex';
+      dashboard.style.display = 'none';
+      document.getElementById('password').value = '';
+    });
+
+    // ---- DASHBOARD ----
+    async function showDashboard() {
+      loginScreen.style.display = 'none';
+      dashboard.style.display = 'block';
+      await loadConfig();
+    }
+
+    async function loadConfig() {
+      document.getElementById('link-loading').style.display = 'block';
+      document.getElementById('link-section').style.display = 'none';
+
+      try {
+        const res = await fetch(API);
+        if (!res.ok) throw new Error('Error al cargar config');
+        config = await res.json();
+        renderLinkSection();
+      } catch {
+        document.getElementById('link-loading').textContent = 'Error al cargar la configuración.';
+      }
+    }
+
+    function renderLinkSection() {
+      document.getElementById('link-loading').style.display = 'none';
+      document.getElementById('link-section').style.display = 'block';
+
+      const display = document.getElementById('current-link-display');
+      if (config.inscriptionUrl) {
+        display.innerHTML = `<a href="${escHtml(config.inscriptionUrl)}" target="_blank" rel="noopener">${escHtml(config.inscriptionUrl)}</a> <span class="badge">Activo</span>`;
+      } else {
+        display.innerHTML = `<span style="color:var(--gris);">Sin link externo configurado</span> <span class="badge none">Usando contacto</span>`;
+      }
+
+      document.getElementById('inscription-url').value = config.inscriptionUrl || '';
+    }
+
+    // ---- GUARDAR LINK ----
+    document.getElementById('link-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const url = document.getElementById('inscription-url').value.trim();
+      const btn = document.getElementById('link-btn');
+      const msg = document.getElementById('link-msg');
+
+      if (url && !url.startsWith('http')) {
+        setMsg(msg, 'error', 'El link debe comenzar con https://');
+        return;
+      }
+
+      btn.disabled = true;
+      btn.innerHTML = '<span class="loader"></span>';
+      setMsg(msg, '', '');
+
+      try {
+        const newConfig = { ...config, inscriptionUrl: url };
+        const res = await fetch(API, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'x-admin-password': password },
+          body: JSON.stringify(newConfig),
+        });
+
+        if (!res.ok) {
+          const data = await res.json().catch(() => ({}));
+          throw new Error(data.error || 'Error al guardar');
+        }
+
+        config = newConfig;
+        renderLinkSection();
+        setMsg(msg, 'success', '✓ Link guardado correctamente');
+        setTimeout(() => setMsg(msg, '', ''), 4000);
+      } catch (err) {
+        setMsg(msg, 'error', err.message);
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Guardar';
+      }
+    });
+
+    // ---- UTILS ----
+    function setMsg(el, type, text) {
+      el.textContent = text;
+      el.className = 'msg ' + type;
+    }
+
+    function escHtml(str) {
+      return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+
+    // Auto-login si hay sesión guardada
+    (async () => {
+      const saved = sessionStorage.getItem('ese_admin_pw');
+      if (saved) {
+        password = saved;
+        await showDashboard();
+      }
+    })();
+  </script>
+</body>
+</html>

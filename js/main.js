@@ -1,3 +1,22 @@
+// Leer configuración del admin (link de inscripción dinámico)
+(async () => {
+  try {
+    const res = await fetch('/.netlify/functions/site-config');
+    if (!res.ok) return;
+    const config = await res.json();
+    if (config.inscriptionUrl) {
+      const btn = document.getElementById('btn-inscripcion');
+      if (btn) {
+        btn.href = config.inscriptionUrl;
+        btn.target = '_blank';
+        btn.rel = 'noopener noreferrer';
+      }
+    }
+  } catch {
+    // En dev local la función no está disponible, se ignora silenciosamente
+  }
+})();
+
 // Menú responsive (hamburguesa)
 const toggle = document.querySelector('.nav__toggle');
 const nav = document.getElementById('nav');
