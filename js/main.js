@@ -196,20 +196,20 @@ function initCarousel() {
         }
     }
 
-    // Si hay imágenes cargadas desde el admin, reemplazar las del HTML
-    if (config.carouselImages?.length > 0) {
-        const track = document.getElementById('carouselTrack');
-        if (track) {
-            track.innerHTML = config.carouselImages.map(key =>
-                `<div class="carousel__slide">
-                    <img src="/.netlify/functions/carousel-image?key=${encodeURIComponent(key)}"
-                         alt="Galería de la escuela"
-                         class="w-full aspect-[4/3] object-cover"
-                         loading="lazy" />
-                </div>`
-            ).join('');
-        }
-    }
+    // Mostrar sección de galería solo si hay imágenes cargadas desde el admin
+    const galeriaSection = document.getElementById('galeria-section');
+    const track = document.getElementById('carouselTrack');
 
-    initCarousel();
+    if (config.carouselImages?.length > 0 && track && galeriaSection) {
+        track.innerHTML = config.carouselImages.map(key =>
+            `<div class="carousel__slide">
+                <img src="/.netlify/functions/carousel-image?key=${encodeURIComponent(key)}"
+                     alt="Galería de la escuela"
+                     class="w-full aspect-[4/3] object-cover"
+                     loading="lazy" />
+            </div>`
+        ).join('');
+        galeriaSection.style.display = 'block';
+        initCarousel();
+    }
 })();
