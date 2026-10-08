@@ -438,7 +438,7 @@
       card.dataset.idx = idx;
 
       card.innerHTML = `
-        <img src="${API_IMG}?key=${encodeURIComponent(key)}" alt="Imagen ${idx + 1}" loading="lazy" />
+        <img src="${API_IMG}?key=${encodeURIComponent(key)}" alt="Imagen ${idx + 1}" loading="eager" />
         <div class="drag-handle" title="Arrastrar para reordenar">⠿</div>
         <button class="delete-btn" title="Borrar imagen">✕</button>
         <div class="img-num">${idx + 1}</div>
@@ -588,16 +588,16 @@
         const { key } = await res.json();
         config.carouselImages = [...(config.carouselImages || []), key];
         successCount++;
-        renderCarouselSection(); // actualiza el grid en tiempo real
       } catch {
         errorCount++;
       }
     }
 
-    // Guardar config UNA SOLA VEZ con todas las keys acumuladas
+    // Guardar config UNA SOLA VEZ con todas las keys acumuladas, luego renderizar
     if (successCount > 0) {
       try {
         await saveConfig();
+        renderCarouselSection(); // renderizar solo cuando los blobs ya están guardados y listos
       } catch {
         setMsg(uploadMsg, 'error', 'Las imágenes se subieron pero no se pudo guardar la lista. Recargá e intentá de nuevo.');
       }
