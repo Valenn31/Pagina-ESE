@@ -25,7 +25,6 @@ export default async (req) => {
   const { searchParams } = new URL(req.url);
   const key = searchParams.get("key");
   const imageStore = getStore("carousel-images");
-  const configStore = getStore("site-config");
 
   // GET — servir imagen binaria
   if (req.method === "GET") {
@@ -50,23 +49,11 @@ export default async (req) => {
     return json({ error: "Contraseña incorrecta" }, 401);
   }
 
-  // POST — subir imagen
+  // POST — subir imagen (solo almacena el blob; el cliente gestiona el config)
   if (req.method === "POST") {
     const contentType = req.headers.get("content-type") || "";
     if (!contentType.startsWith("image/")) {
       return json({ error: "Solo se permiten archivos de imagen" }, 400);
-    }
-
-    const config = (await configStore.get("config", { type: "json" })) ?? {
-      inscriptionUrl: "",
-      carouselImages: [],
-    };
-
-    if ((config.carouselImages?.length ?? 0) >= MAX_IMAGES) {
-      return json(
-        { error: `Límite de ${MAX_IMAGES} imágenes alcanzado. Borrá alguna antes de subir.` },
-        400
-      );
     }
 
     const buffer = await req.arrayBuffer();
@@ -80,13 +67,10 @@ export default async (req) => {
 
     await imageStore.set(imageKey, buffer, { metadata: { contentType, originalName } });
 
-    config.carouselImages = [...(config.carouselImages ?? []), imageKey];
-    await configStore.setJSON("config", config);
-
     return json({ ok: true, key: imageKey });
   }
 
-  // DELETE — borrar imagen
+  // DELETE — borrar imagen (solo elimina el blob; el cliente gestiona el config)
   if (req.method === "DELETE") {
     if (!key) return json({ error: "Falta el parámetro key" }, 400);
 
@@ -95,13 +79,6 @@ export default async (req) => {
     } catch {
       // ignorar si ya no existe
     }
-
-    const config = (await configStore.get("config", { type: "json" })) ?? {
-      inscriptionUrl: "",
-      carouselImages: [],
-    };
-    config.carouselImages = (config.carouselImages ?? []).filter((k) => k !== key);
-    await configStore.setJSON("config", config);
 
     return json({ ok: true });
   }

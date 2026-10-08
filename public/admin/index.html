@@ -522,6 +522,7 @@
       });
       if (!res.ok) { const d = await res.json().catch(() => ({})); throw new Error(d.error || 'Error al borrar'); }
       config.carouselImages = config.carouselImages.filter(k => k !== key);
+      await saveConfig();
       renderCarouselSection();
     } catch (err) {
       alert('Error al borrar: ' + err.message);
@@ -590,6 +591,15 @@
         renderCarouselSection(); // actualiza el grid en tiempo real
       } catch {
         errorCount++;
+      }
+    }
+
+    // Guardar config UNA SOLA VEZ con todas las keys acumuladas
+    if (successCount > 0) {
+      try {
+        await saveConfig();
+      } catch {
+        setMsg(uploadMsg, 'error', 'Las imágenes se subieron pero no se pudo guardar la lista. Recargá e intentá de nuevo.');
       }
     }
 
