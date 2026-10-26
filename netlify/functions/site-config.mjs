@@ -35,6 +35,13 @@ export default async (req) => {
         headers: CORS,
       });
     }
+
+    // ?validate=1 → solo verifica la contraseña, no toca el config
+    const { searchParams } = new URL(req.url);
+    if (searchParams.get("validate") === "1") {
+      return new Response(JSON.stringify({ ok: true }), { headers: CORS });
+    }
+
     try {
       const body = await req.json();
       await store.setJSON("config", body);

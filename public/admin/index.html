@@ -310,10 +310,9 @@
     loginBtn.innerHTML = '<span class="loader"></span>';
     loginError.style.display = 'none';
     try {
-      const res = await fetch(API_CONFIG, {
+      const res = await fetch(API_CONFIG + '?validate=1', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'x-admin-password': pw },
-        body: JSON.stringify(config),
       });
       if (res.status === 401) { showLoginError('Contraseña incorrecta. Intentá de nuevo.'); return; }
       if (res.status === 404) { showLoginError('El panel solo funciona en el sitio publicado en Netlify.'); return; }
